@@ -1,6 +1,6 @@
 <h1>マイページ</h1>
 <%= "ログインユーザー：#{@user.nickname}" %>
-<%= link_to '質問一覧', "#"%>
-<%= link_to '回答依頼一覧', "#"%>
+<%= link_to '質問一覧', questions_list_user_path%>
+<%= link_to '回答依頼一覧', answer_requests_user_path%>
 <%= link_to '属性一覧', "#"%>
 <%= link_to 'トップページ', root_path%>
