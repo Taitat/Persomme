@@ -6,4 +6,10 @@
   <div><%= answer_request.question.title%></div>
   質問の内容
   <div><%= answer_request.question.content%></div>
+  画像
+  <div>
+  <%= image_tag answer_request.question.image.variant(
+    resize_to_fill: [640, 640]
+    ) if answer_request.question.image.attached? %>
+  </div>
 <%end%>
