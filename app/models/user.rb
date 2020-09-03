@@ -9,5 +9,8 @@ class User < ApplicationRecord
   validates_format_of :email, with: EMAIL_REGEX
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX
+
+  has_many :questions
+  has_many :requests
   
 end
