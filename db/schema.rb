@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_055222) do
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.integer "genre_id", default: 1, null: false
+    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
