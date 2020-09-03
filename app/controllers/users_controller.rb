@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def answer_requests
+    @answer_requests = Request.where(user_id: current_user.id)
   end
 
 end

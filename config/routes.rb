@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :questions, only: [:new,:create]
+
+
   
 end

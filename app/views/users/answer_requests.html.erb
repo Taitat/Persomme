@@ -1,1 +1,9 @@
 <h1>回答依頼</h1>
+
+
+<% @answer_requests.each do |answer_request|%>
+  質問のタイトル
+  <div><%= answer_request.question.title%></div>
+  質問の内容
+  <div><%= answer_request.question.content%></div>
+<%end%>
