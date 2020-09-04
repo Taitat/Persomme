@@ -1,5 +1,5 @@
 <h1>質問フォーム</h1>
-<%= form_with model: @question, method: :post,local: true do |f| %>
+<%= form_with model: @question,local: true do |f| %>
 
 <%=f.text_field :title, placeholder: '質問のタイトルを入力してください' %>
 <%=f.text_area :content, placeholder: '質問の内容を入力してください'%>

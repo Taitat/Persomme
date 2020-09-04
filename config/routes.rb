@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'questions_list'
     end
     
-    resources :answers, only: [:index,:show]
+    resources :answers, only: [:index,:show,:create]
     
   end
 

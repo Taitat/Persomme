@@ -1,0 +1,20 @@
+<p>回答依頼</p>
+
+<div>
+<%= @answer_request.question.user.nickname%></div>
+<div><%= @answer_request.question.genre.name%></div>
+<div><%= @answer_request.question.title%></div>
+<div><%= @answer_request.question.content%></div>
+<div><%= image_tag @answer_request.question.image.variant(
+    resize_to_fill: [640, 640]
+    ) if @answer_request.question.image.attached? %>
+</div>
+
+<%= form_with model: [@user,@answer],local: true do |f|%>
+  <%= f.text_area :content, placeholder: '回答を入力してください'%>
+  <%= f.file_field :image%>
+  <%= f.hidden_field :question_id, value: @question.id %>
+  <%= f.submit '送信'%>
+
+<%end%>
+
