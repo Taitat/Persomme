@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   root to: "questions#index"
   resources :users, only: [:show] do
     member do
-      get 'questions_list','answer_requests'
+      get 'questions_list'
     end
+    
+    resources :answers, only: [:index,:show,:create]
+    
   end
 
   resources :questions, only: [:new,:create]

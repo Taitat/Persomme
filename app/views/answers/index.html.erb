@@ -1,0 +1,10 @@
+<h1>回答依頼一覧</h1>
+
+
+<% @answer_requests.each do |answer_request|%>
+  ジャンル
+  <div><%= answer_request.question.genre.name%></div>
+  質問のタイトル
+  <div><%= link_to "#{answer_request.question.title}", user_answer_path(current_user.id,answer_request.id)%></div>
+  
+<%end%>

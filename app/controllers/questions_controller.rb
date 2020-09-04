@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
   end
   
   def create_request
-    user_ids = User.order("rand()").limit(100).pluck(:id)
+    user_ids = User.where.not(id: current_user.id).order("rand()").limit(100).pluck(:id)
     user_ids.each{|user_id| Request.create(question_id: @question.id, user_id: user_id)}
   end
 

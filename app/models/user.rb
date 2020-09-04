@@ -12,5 +12,6 @@ class User < ApplicationRecord
 
   has_many :questions
   has_many :requests
+  has_many :answers
   
 end
