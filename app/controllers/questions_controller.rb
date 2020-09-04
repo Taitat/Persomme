@@ -1,5 +1,16 @@
 class QuestionsController < ApplicationController
 
+  def index 
+    @questions = Question.where(user_id: current_user.id)
+  end
+
+  def show
+    @question = Question.find(params[:id])
+    @answers = Answer.where(question_id: params[:id])
+  end
+
+
+
 
   def new
     @question = Question.new

@@ -3,7 +3,5 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def questions_list
-  end
-
+  
 end
