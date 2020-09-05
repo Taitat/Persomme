@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+  
+}
+
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+
+.answer_page{
+  display: flex;
+  justify-content: center;
+
+}
+.answer-request-button{
+  padding:0 10px;
+  margin-right: 2vw;
+  white-space: nowrap;
+}
+
+.top-page-header {
+  width: 100vw;
+  padding: 2vh 15vw;
+  
+  
+}
+
+.header-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.persomme-icon{
+  width: 10vw;
+  padding-top: 12px;
+  margin-right: 1vw;
+
+
+}
+
+.header-right ul{
+  display: flex;
+}
+
+.user-nickname{
+  padding: 20px;
+  margin-right: 2vw;
+  white-space: nowrap;
+
+}
+
+.header-left{
+  display: flex;
+  align-items: center;
+}
+
+.search-form{
+  display: flex;
+  align-items: center;
+  width: 40vw
+}
+
+.input-box{
+  width: 100%;
+}
+
+.search-button{
+  border: 0px;
+  background-color: white;
+  width: auto;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  
+}
+
+.new-question{
+  white-space: nowrap;
+}
+
+
