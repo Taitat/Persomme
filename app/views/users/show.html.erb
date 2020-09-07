@@ -1,17 +1,18 @@
 <%= render "shared/header"%>
 
 <div class="mypage">
-  <div>
-  <div class="mypage-name">
-    <h1><%= "#{@user.nickname}" %></h1>
-  </div>
+ 
+    <div class="mypage-name">
+      <h3><%= "#{@user.nickname}" %></h3>
+    </div>
 
-  <div class="mypage-menu">
-    <ul class="mypage-menu-list">
-      <li><%= link_to '質問一覧', questions_path%></li>
-      <li><%= link_to '回答依頼一覧', user_answers_path(:user_id)%></li>
-      <li><%= link_to '属性一覧', "#"%></li>
-    </ul>
-  </div>
-  </div>
+    <div class="mypage-menu">
+      <ul class="mypage-menu-list">
+        <li class="list-element"><%= link_to '質問一覧', questions_path%></li>
+        <li class="list-element"><%= link_to '回答依頼一覧', user_answers_path(:user_id)%></li>
+        <li class="list-element"><%= link_to '属性一覧', "#"%></li>
+      </ul>
+    </div>
+  
+  
 </div>
