@@ -1,12 +1,25 @@
 <%= render "shared/header"%>
 
+<div class="question-page">
+    
+    <form class="question-form">
+    <h1>質問作成</h1>
+      <%= form_with model: @question,local: true do |f| %>
+        <ul>
+          <p class="form-title">ジャンル</p>
+          <li class="form-list"><%=f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class: "genre-select"})%></li>
+          <p class="form-title">タイトル</p>
+          <li class="form-list"><%=f.text_field :title, placeholder: '質問のタイトルを入力してください',class:"title" %></li>
+          <p class="form-title">内容</p>
+          <li class="form-list"><%=f.text_area :content, placeholder: '質問の内容を入力してください',class:"content"%></li>
+          <p class="form-title">添付</p>
+          <li class="form-list"><%=f.file_field :image,class:"image-field"%></li>
+          <div class="submit">
+          <%=f.submit '送信',class:"submit-button"%>
+          </div>
+        </ul>
+      <%end%>
 
-<h1>質問フォーム</h1>
-<%= form_with model: @question,local: true do |f| %>
+    </form>
 
-<%=f.text_field :title, placeholder: '質問のタイトルを入力してください' %>
-<%=f.text_area :content, placeholder: '質問の内容を入力してください'%>
-<%=f.file_field :image%>
-<%=f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class: "genre-select"})%>
-<%=f.submit '送信'%>
-<%end%>
+</div>
