@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   get 'posts/index'
-  get 'users/enchant'
+  post 'users/enchant'
   root to: "posts#index"
   devise_for :users
 

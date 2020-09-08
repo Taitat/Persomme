@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_022144) do
   create_table "user_characteristics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "characteristic_id", null: false
+    t.string "answer", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["characteristic_id"], name: "index_user_characteristics_on_characteristic_id"

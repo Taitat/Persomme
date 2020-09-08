@@ -5,7 +5,6 @@ class CharacteristicsController < ApplicationController
 
   def create 
     @characteristic = Characteristic.new(name: params[:characteristic][:name])
-    binding.pry
     if @characteristic.save
       redirect_to characteristics_path
     else
