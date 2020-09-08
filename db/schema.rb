@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_094852) do
+ActiveRecord::Schema.define(version: 2020_09_08_022144) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2020_09_03_094852) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "characteristics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
@@ -60,6 +66,15 @@ ActiveRecord::Schema.define(version: 2020_09_03_094852) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_requests_on_question_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "user_characteristics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "characteristic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["characteristic_id"], name: "index_user_characteristics_on_characteristic_id"
+    t.index ["user_id"], name: "index_user_characteristics_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,4 +96,6 @@ ActiveRecord::Schema.define(version: 2020_09_03_094852) do
   add_foreign_key "questions", "users"
   add_foreign_key "requests", "questions"
   add_foreign_key "requests", "users"
+  add_foreign_key "user_characteristics", "characteristics"
+  add_foreign_key "user_characteristics", "users"
 end

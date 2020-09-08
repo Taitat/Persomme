@@ -1,0 +1,4 @@
+<%= form_with model: @characteristic,local: true do |f| %>
+  <%=f.text_field :name, placeholder: '作成したい属性を入力してください'%>
+  <%=f.submit '送信'%>
+<%end%>

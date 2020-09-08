@@ -13,5 +13,10 @@ class User < ApplicationRecord
   has_many :questions
   has_many :requests
   has_many :answers
+  has_many :characteristics, through: :user_characteristics
+  has_many :user_characteristics
+  
+
+
   
 end

@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @question = Question.new(question_params)
     if @question.save
       create_request()
