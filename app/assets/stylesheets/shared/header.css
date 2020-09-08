@@ -1,0 +1,115 @@
+
+.answer_page{
+  display: flex;
+  justify-content: center;
+
+}
+.answer-request-button{
+  padding:0 5px;
+  margin-right: 1vw;
+  white-space: nowrap;
+  font-weight: bold;
+  color:#4966bc;
+}
+
+.top-page-header {
+  width: 100vw;
+  padding: 1vh 15vw;
+  background-color: #dcd3f5;
+  color:#4966bc;
+  box-shadow: 7px 7px 10px 1px rgba(0,0,0,0.1);
+  position: relative;
+  
+  
+}
+
+.header-box{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+  
+.header-left{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  width:70vw;
+  position: relative;
+}
+  
+
+.persomme-icon{
+  width: 10vw;
+  margin-right: 1vw;
+  padding-top:10px;
+  
+}
+
+.header-right{
+  width: 30%;
+}
+
+.header-right-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width:30%;
+  font-weight: bold;
+  
+}
+
+
+.user-nickname {
+  padding: 10px;
+  white-space: nowrap;
+  width:100%;
+  color:#4966bc;
+  
+}
+
+.new-question{
+  padding: 10px;
+  white-space: nowrap;
+  width:100%;
+  color:#4966bc;
+  
+}
+
+.login{
+  color:#4966bc;
+}
+
+.sign-up{
+  color:#4966bc;
+}
+
+
+.search-form{
+  display: flex;
+  align-items: center;
+  width: 30vw;
+}
+
+.input-box{
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid gray;
+  padding: 5px;
+  
+
+}
+
+.search-button{
+  border: 0px;
+  background-color: #dcd3f5;
+  width: auto;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  
+}
+
+
+
+
