@@ -76,6 +76,14 @@
   
 }
 
+.login{
+  color:#4966bc;
+}
+
+.sign-up{
+  color:#4966bc;
+}
+
 
 .search-form{
   display: flex;

@@ -46,6 +46,15 @@
   border: 1px solid lightgray;
   border-radius: 5px;
   padding: 10px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout{
+  padding-top:80px;
+  font-size:15px;
+  color: gray;
+
 }
   
 .list-element{
@@ -55,8 +64,6 @@
   margin:30px 0;
   height:100%;
   width:100%;
-  
-  
 
 }
 
@@ -66,8 +73,6 @@
 
 .mypage-menu-list a{
   color: gray;
-  
-
 }
 
 .list-element a{
