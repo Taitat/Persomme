@@ -1,14 +1,13 @@
 <h1>質問フォーム</h1>
 <%= form_with model: @question,local: true do |f| %>
 
-<<<<<<< Updated upstream
 <%=f.text_field :title, placeholder: '質問のタイトルを入力してください' %>
 <%=f.text_area :content, placeholder: '質問の内容を入力してください'%>
 <%=f.file_field :image%>
 <%=f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class: "genre-select"})%>
 <%=f.submit '送信'%>
 <%end%>
-=======
+
 <div class="question-page">
     
     <div class="question-form">
@@ -31,5 +30,4 @@
 
     </div>
 
-</div>
->>>>>>> Stashed changes
+</div>>>>>>>> Stashed changes
