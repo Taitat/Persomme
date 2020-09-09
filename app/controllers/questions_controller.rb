@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :search_characteristic, only: [:new, :search, :create]
 
   def index 
     @questions = Question.where(user_id: current_user.id)
@@ -10,15 +11,19 @@ class QuestionsController < ApplicationController
   end
 
 
-
+  def search
+    @results = @p.result
+    
+    
+    render action: :new
+  end
 
   def new
     @question = Question.new
-    
+    @characterictic = Characteristic.all
   end
 
   def create
-    binding.pry
     @question = Question.new(question_params)
     if @question.save
       create_request()
@@ -34,10 +39,17 @@ class QuestionsController < ApplicationController
     user_ids.each{|user_id| Request.create(question_id: @question.id, user_id: user_id)}
   end
 
+  
+
+
   private
 
   def question_params
     params.require(:question).permit(:title, :content, :genre_id, :image).merge(user_id: current_user.id)
+  end
+
+  def search_characteristic
+    @p = Characteristic.ransack(params[:q])
   end
 
 

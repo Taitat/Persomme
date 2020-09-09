@@ -2,7 +2,22 @@
 
 <div class="question-page">
     
-    <form class="question-form">
+    <div class="question-form">
+    
+    <%= search_form_for @p, url: questions_search_path do |f| %>
+      <%= f.label :title, 'ペルソナ' %>
+      <%= f.search_field :title_cont%>
+       
+      <%= f.submit '検索' %>
+    <% end %>
+    <% if @results %>
+      <% @results.each do |result|%>
+      <%= result.title%>
+      <%end%>
+    <%end%>
+
+
+
     <h1>質問作成</h1>
       <%= form_with model: @question,local: true do |f| %>
         <ul>
@@ -18,8 +33,11 @@
           <%=f.submit '送信',class:"submit-button"%>
           </div>
         </ul>
+        
       <%end%>
 
-    </form>
+    </div>
+    <form>
+  
 
 </div>

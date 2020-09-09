@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import "./styles";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "jquery-ui.min";
+@import "jquery.tagsinput.min";
+
+
+
  * {
   box-sizing: border-box;
 }
