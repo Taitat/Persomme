@@ -13,9 +13,10 @@ class QuestionsController < ApplicationController
 
   def search
     @results = @p.result
-    
-    
-    render action: :new
+    if @p.result.length < 50
+    render json:  {results: @results}
+    end
+       
   end
 
   def new
@@ -31,12 +32,16 @@ class QuestionsController < ApplicationController
     else
       render action: :new
     end
-
   end
   
   def create_request
-    user_ids = User.where.not(id: current_user.id).order("rand()").limit(100).pluck(:id)
-    user_ids.each{|user_id| Request.create(question_id: @question.id, user_id: user_id)}
+    selected_ids = params[:selected_ids]
+    selected_ids_array = selected_ids.split(",")
+    selected_ids_array.each do |selected_id|
+      user_ids = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(id: current_user.id).pluck(:user_id)
+      @user_ids_array = user_ids.uniq
+    end
+    @user_ids_array.each{|user_id| Request.create(question_id: @question.id, user_id: user_id)}
   end
 
   
