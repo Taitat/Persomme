@@ -1,5 +1,10 @@
 <%= render "shared/header"%>
 
+<% if user_signed_in? && current_user.id == @post.user.id%>
+<%= link_to '削除', post_path, method: :delete %>
+<% end %>
+
+
 <div><%= @question.genre.name%></div>
 <div><%= @question.title%></div>
 <div><%= @question.content%></div>

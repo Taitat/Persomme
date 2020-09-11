@@ -21,4 +21,8 @@
 </div>
 <%end%>
 
-<%= link_to '投稿する',posts_path(question_id: @question.id), method: :post, local: true%>
+<% if @posted.present?%>
+    <p>投稿済み</p>
+<% else %>
+    <%= link_to '投稿する',posts_path(question_id: @question.id), method: :post, local: true%>
+<% end %>
