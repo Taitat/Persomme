@@ -13,6 +13,8 @@ class CharacteristicsController < ApplicationController
 
   end
 
+  private
+
   def characteristic_params
     params.require(:characteristic).permit(:name)
   end

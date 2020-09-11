@@ -16,7 +16,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
 
@@ -25,14 +28,11 @@ class PostsController < ApplicationController
 
   def characteristic_question
     if user_signed_in?
-      answered_characteristic = UserCharacteristic.where(user_id: current_user.id)
-      answered_characteristic_ids = []
-      answered_characteristic.each do |char|
-      answered_characteristic_ids.push(char.characteristic_id)
-      end
+      answered_characteristic_ids = UserCharacteristic.where(user_id: current_user.id).pluck(:characteristic_id)
+    end
     
     @characteristic = Characteristic.where.not(id: answered_characteristic_ids).order("rand()").limit(1)[0]
-    end
+    
   end
 
 end

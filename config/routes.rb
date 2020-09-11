@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:index,:new,:create,:show]
   resources :characteristics, only: [:index,:create]
-  resources :posts, only: [:index, :create, :show]
+  resources :posts, only: [:index, :create, :show] do
+    resources :comments, only: [:create]
+  end
+  
 
   
 end

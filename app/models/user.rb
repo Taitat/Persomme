@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :answers
   has_many :characteristics, through: :user_characteristics
   has_many :user_characteristics
+  has_many :comments
   has_one :post
 
 

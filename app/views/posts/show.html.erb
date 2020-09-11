@@ -18,4 +18,16 @@
 </div>
 <%end%>
 
+<div>
+    <%= form_with model: [@post,@comment], method: :post, local: true do |f| %>
+    <%= f.text_area :content, placeholder:"コメントを入力してください" %>
+    <%= f.submit '送信'%>
+    <%end%>
+</div>
 
+<div>
+    <% @comments.each do |comment|%>
+    <div><%= comment.content%></div>
+    <div><%= comment.user.nickname%></div>
+    <%end%>
+</div>
