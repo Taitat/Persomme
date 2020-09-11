@@ -1,0 +1,21 @@
+<%= render "shared/header"%>
+
+<div><%= @question.genre.name%></div>
+<div><%= @question.title%></div>
+<div><%= @question.content%></div>
+<div><%= image_tag @question.image.variant(
+    resize_to_fill: [640, 640]
+    ) if @question.image.attached? %>
+</div>
+
+<h1>回答</h1>
+<div><% @question.answers.each do |answer|%></div>
+<div><%= answer.user.nickname%></div>
+<div><%= answer.content%></div>
+<div><%= image_tag answer.image.variant(
+    resize_to_fill: [640, 640]
+    ) if answer.image.attached? %>
+</div>
+<%end%>
+
+

@@ -12,7 +12,7 @@
 <div class="post-field">
   <% @posts.each do |post| %>
     <div><%= post.question.genre.name%></div>
-    <div><%= post.question.title%></div>
+    <div><%= link_to post.question.title, post_path(id: post.question.id)%></div>
     <div><%= image_tag post.question.image.variant(
     resize_to_fill: [640, 640]
     ) if post.question.image.attached? %>
