@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'posts/index'
   get 'questions/search'
   post 'users/enchant'
   root to: "posts#index"
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:index,:new,:create,:show]
   resources :characteristics, only: [:index,:create]
+  resources :posts, only: [:index, :create, :show]
 
   
 end

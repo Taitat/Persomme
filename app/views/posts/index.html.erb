@@ -7,3 +7,15 @@
   <%= link_to 'YES', users_enchant_path(@characteristic, answer: "y"), method: :post, local: true %>
   <%= link_to 'NO', users_enchant_path(@characteristic,answer: "n"), method: :post, local: true %>
 <%end%>
+
+
+<div class="post-field">
+  <% @posts.each do |post| %>
+    <div><%= post.question.genre.name%></div>
+    <div><%= link_to post.question.title, post_path(id: post.question.id)%></div>
+    <div><%= image_tag post.question.image.variant(
+    resize_to_fill: [640, 640]
+    ) if post.question.image.attached? %>
+</div>
+  <%end%>
+</div>

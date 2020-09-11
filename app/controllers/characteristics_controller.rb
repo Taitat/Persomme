@@ -4,7 +4,7 @@ class CharacteristicsController < ApplicationController
   end
 
   def create 
-    @characteristic = Characteristic.new(name: params[:characteristic][:name])
+    @characteristic = Characteristic.new(characteristic_params)
     if @characteristic.save
       redirect_to characteristics_path
     else
@@ -12,5 +12,10 @@ class CharacteristicsController < ApplicationController
     end
 
   end
+
+  def characteristic_params
+    params.require(:characteristic).permit(:name)
+  end
+
 
 end

@@ -1,8 +1,5 @@
 <%= render "shared/header"%>
 
-
-<h1>質問一覧</h1>
-
 <div><%= @question.genre.name%></div>
 <div><%= @question.title%></div>
 <div><%= @question.content%></div>
@@ -12,7 +9,7 @@
 </div>
 
 <h1>回答</h1>
-<div><% @answers.each do |answer|%></div>
+<div><% @question.answers.each do |answer|%></div>
 <div><%= answer.user.nickname%></div>
 <div><%= answer.content%></div>
 <div><%= image_tag answer.image.variant(
@@ -21,4 +18,4 @@
 </div>
 <%end%>
 
-<%= link_to '投稿する',posts_path(question_id: @question.id), method: :post, local: true%>
+
