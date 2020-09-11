@@ -6,6 +6,7 @@ class Question < ApplicationRecord
   has_one_attached :image
   has_many :requests
   has_many :answers
+  has_one :post
   belongs_to :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions

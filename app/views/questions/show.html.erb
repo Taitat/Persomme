@@ -20,3 +20,5 @@
     ) if answer.image.attached? %>
 </div>
 <%end%>
+
+<%= link_to '投稿する',posts_path(question_id: @question.id), method: :post, local: true%>

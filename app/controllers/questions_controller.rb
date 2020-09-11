@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    if @question.save
+    if @question.save && (params[:selected_ids] != "")
       create_request()
       redirect_to root_path  
     else
