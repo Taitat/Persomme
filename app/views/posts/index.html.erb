@@ -1,3 +1,9 @@
 <%= render "shared/header"%>
 
-
+<% if @characteristic == nil %>
+  <p> 未回答の属性はありません </p>
+<%else%>  
+  <%= @characteristic.name %>
+  <%= link_to 'YES', users_enchant_path(@characteristic, answer: "y"), method: :post, local: true %>
+  <%= link_to 'NO', users_enchant_path(@characteristic,answer: "n"), method: :post, local: true %>
+<%end%>

@@ -2,7 +2,25 @@
 
 <div class="question-page">
     
-    <form class="question-form">
+  <div class="question-form" id="question-form">
+
+    <div class="select-characteristic" id="select-characteristic"></div>
+    
+    <%= search_form_for @p, remote: true,id: "search-form", url: questions_search_path do |f| %>
+      <%= f.label :title, 'ペルソナ' %>
+      <%= f.search_field :title_cont%>
+    <% end %>
+
+    <div class="search-results" id="search-results">
+      <% if @results %>
+        <% @results.each do |result|%>
+          <%= result.title%>
+        <%end%>
+      <%end%>
+    </div>
+
+
+
     <h1>質問作成</h1>
       <%= form_with model: @question,local: true do |f| %>
         <ul>
@@ -14,12 +32,13 @@
           <li class="form-list"><%=f.text_area :content, placeholder: '質問の内容を入力してください',class:"content"%></li>
           <p class="form-title">添付</p>
           <li class="form-list"><%=f.file_field :image,class:"image-field"%></li>
-          <div class="submit">
-          <%=f.submit '送信',class:"submit-button"%>
-          </div>
+          <li class="form-list" id="hidden-parameter"></li>
+            <div class="submit" id="submit">
+              <%=f.submit '送信',class:"submit-button",id:"question-submit"%>
+            </div>
         </ul>
       <%end%>
 
-    </form>
+  </div>
 
 </div>
