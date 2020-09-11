@@ -8,9 +8,9 @@ class PostsController < ApplicationController
     @question = Question.find(params[:question_id])
     @post = Post.new(user_id: current_user.id, question_id: @question.id)
     if @post.save
-      redirect_to questions_path
+      redirect_to '/posts/create_complete'
     else
-      render question_path
+      render questions_path
     end
 
   end
@@ -22,6 +22,10 @@ class PostsController < ApplicationController
     @comments = Comment.all
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+  end
 
 
 

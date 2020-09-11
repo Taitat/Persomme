@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   get 'questions/search'
+  get 'posts/create_complete'
   post 'users/enchant'
   root to: "posts#index"
   devise_for :users
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:index,:new,:create,:show]
   resources :characteristics, only: [:index,:create]
-  resources :posts, only: [:index, :create, :show] do
+  resources :posts, only: [:index, :create, :show, :destroy] do
     resources :comments, only: [:create]
   end
   
