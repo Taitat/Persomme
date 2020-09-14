@@ -4,7 +4,7 @@
 <%= link_to '削除', post_path, method: :delete %>
 <% end %>
 
-
+<div><%= @question.user.nickname%></div>
 <div><%= @question.genre.name%></div>
 <div><%= @question.title%></div>
 <div><%= @question.content%></div>
@@ -22,6 +22,10 @@
     ) if answer.image.attached? %>
 </div>
 <%end%>
+
+<div id="favorite-button">
+    <%= render partial:'favorites/favorite', locals: {post: @post} %>
+</div>
 
 <div>
     <%= form_with model: [@post,@comment], method: :post, local: true do |f| %>

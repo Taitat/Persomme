@@ -1,0 +1,11 @@
+<%= render "shared/header"%>
+
+<% @favorite_posts.each do |post|%>
+<div>
+<div><%= post.question.genre.name%></div>
+    <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id)%></div>
+    <div><%= image_tag post.question.image.variant(
+    resize_to_fill: [640, 640]
+    ) if post.question.image.attached? %>
+</div>
+<%end%>

@@ -28,8 +28,6 @@ class PostsController < ApplicationController
   end
 
 
-
-
   def characteristic_question
     if user_signed_in?
       answered_characteristic_ids = UserCharacteristic.where(user_id: current_user.id).pluck(:characteristic_id)
