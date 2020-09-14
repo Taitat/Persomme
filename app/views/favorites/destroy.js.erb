@@ -1,0 +1,2 @@
+$('#favorite-button').html("<%= j(render(partial: 'favorites/favorite', locals: {post: @post})) %>");
+$('#favorite-button-<%= @post.id%>').html("<%= j(render(partial: 'favorites/favorite', locals: {post: @post})) %>");
