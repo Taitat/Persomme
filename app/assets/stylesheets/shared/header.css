@@ -1,25 +1,28 @@
 
+
 .answer_page{
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding:10px;
 
 }
 .answer-request-button{
   padding:0 5px;
   margin-right: 1vw;
   white-space: nowrap;
-  font-weight: bold;
-  color:#4966bc;
+  color:#522D80;
 }
 
 .top-page-header {
   width: 100vw;
-  padding: 1vh 15vw;
-  background-color: #dcd3f5;
+  padding: 1vh 10vw;
+  background-color: #EEEEEE;
   color:#4966bc;
   box-shadow: 7px 7px 10px 1px rgba(0,0,0,0.1);
   position: relative;
-  
+  display: flex;
+  align-items: center;
   
 }
 
@@ -40,40 +43,54 @@
   
 
 .persomme-icon{
-  width: 10vw;
+  width: 15vw;
   margin-right: 1vw;
-  padding-top:10px;
+  display: flex;
+  padding-bottom: 10px;
+  margin-right: 30px;
   
 }
 
-.header-right{
-  width: 30%;
+.persomme-icon a{
+  width: 10vh;
+  height: 100%;
+  text-align: center;
+  
 }
 
-.header-right-list{
+.user-logo{
+  margin-left: 40px;
+  margin-top: 3px;
+}
+
+
+.header-right{
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width:30%;
+}
+.user-nickname {
+  padding: 5px;
+  white-space: nowrap;
+  width:100%;
+  color:#522D80;
   font-weight: bold;
   
 }
 
-
-.user-nickname {
-  padding: 10px;
+.new-question{
+  padding: 13px;
   white-space: nowrap;
   width:100%;
-  color:#4966bc;
+  color:#FFF;
+  border: 1px solid #522D80;
+  border-radius: 24px;
+  background-color: #522D80;
+  margin-left: 40px;
   
 }
 
-.new-question{
-  padding: 10px;
-  white-space: nowrap;
-  width:100%;
-  color:#4966bc;
-  
+.question-button{
+  padding-left:4px;
 }
 
 .login{
@@ -85,24 +102,25 @@
 }
 
 
-.search-form{
+.header-search-form{
   display: flex;
   align-items: center;
-  width: 30vw;
+  width: 35vw;
 }
 
 .input-box{
   width: 100%;
   border-radius: 4px;
   border: 1px solid gray;
-  padding: 5px;
+  padding: 8px;
+  font-size: 12px;
   
 
 }
 
 .search-button{
   border: 0px;
-  background-color: #dcd3f5;
+  background-color: #EEEEEE;
   width: auto;
   overflow: visible;
   display: flex;

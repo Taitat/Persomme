@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
       user_ids = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(id: current_user.id).pluck(:user_id)
       @user_ids_array = user_ids.uniq
     end
-    @user_ids_array.each{|user_id| Request.create(question_id: @question.id, user_id: user_id)}
+    @user_ids_array.each{|user_id| Request.create(request_params(user_id,@question.id))}
   end
 
   
@@ -58,5 +58,8 @@ class QuestionsController < ApplicationController
     @p = Characteristic.ransack(params[:q])
   end
 
+  def request_params(user_id,question_id)
+    params.permit().merge(question_id: question_id, user_id: user_id, selected_ids: params[:selected_ids])
+  end
 
 end

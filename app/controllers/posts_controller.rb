@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     characteristic_question
     @posts = Post.order("created_at DESC").limit(10)    
+    
   end
 
   def create
