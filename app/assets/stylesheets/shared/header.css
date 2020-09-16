@@ -59,7 +59,7 @@
 }
 
 .user-logo{
-  margin-left: 40px;
+  margin-left: 2vw;
   margin-top: 3px;
 }
 
@@ -105,7 +105,7 @@
 .header-search-form{
   display: flex;
   align-items: center;
-  width: 35vw;
+  width: 40vw;
 }
 
 .input-box{

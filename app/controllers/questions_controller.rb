@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
       create_request()
       redirect_to root_path  
     else
-      render action: :new
+      render "questions/new"
     end
   end
   

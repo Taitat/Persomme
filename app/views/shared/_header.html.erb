@@ -27,7 +27,7 @@
       
         <% if user_signed_in? %>
         <div class="header-right">
-          <%= link_to image_tag("user.png", class:"user-logo"), url: user_path(current_user.id)%>
+          <%= link_to image_tag("user.png", class:"user-logo"), url: user_path(current_user.id) %>
 
           <div><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></div>
           <div class="question-button"><%= link_to '質問する', new_question_path, class: "new-question" %> </div> 
