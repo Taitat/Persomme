@@ -84,12 +84,14 @@
   box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
   white-space: nowrap;
   font-weight: bold;
+  color:#444444;
 
 }
 
 .select-characteristic{
   display:none;
   line-height: 40px;
+  margin-bottom:2px;
 
 }
 

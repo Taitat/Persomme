@@ -39,9 +39,14 @@ class QuestionsController < ApplicationController
     selected_ids = params[:selected_ids]
     selected_ids_array = selected_ids.split(",")
     selected_ids_array.each do |selected_id|
-      user_ids = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(id: current_user.id).pluck(:user_id)
-      @user_ids_array = user_ids.uniq
+      users = []
+      users = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(id: current_user.id).pluck(:user_id)
+      users.each do |user|
+        @user_ids.push(user)
+      end
     end
+    binding.pry
+    @user_ids_array = @user_ids.uniq
     @user_ids_array.each{|user_id| Request.create(request_params(user_id,@question.id))}
   end
 

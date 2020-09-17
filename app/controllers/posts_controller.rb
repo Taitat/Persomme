@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @question = Question.find(params[:question_id])
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = Comment.where(post_id: params[:id])
   end
 
   def destroy
