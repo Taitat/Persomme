@@ -9,5 +9,5 @@
         <%end%>
     <% end %>
 <% else %>
-    <p><span>お気に入り数: </span><%= post.favorites.count %></p>
+    <p class="sign-out-favorite"><i class="far fa-heart unlike-btn"></i><%= post.favorites.count %></p>
 <% end %>

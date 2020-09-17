@@ -27,8 +27,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    if @question.save && (params[:selected_ids] != "")
-      create_request()
+    if create_request() != nil 
       redirect_to root_path  
     else
       render "questions/new"
@@ -40,14 +39,22 @@ class QuestionsController < ApplicationController
     selected_ids_array = selected_ids.split(",")
     selected_ids_array.each do |selected_id|
       users = []
-      users = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(id: current_user.id).pluck(:user_id)
+      @user_ids = []
+      users = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(user_id: current_user.id).pluck(:user_id)
+      binding.pry
       users.each do |user|
         @user_ids.push(user)
       end
     end
     binding.pry
-    @user_ids_array = @user_ids.uniq
-    @user_ids_array.each{|user_id| Request.create(request_params(user_id,@question.id))}
+    if @user_ids != []
+      binding.pry
+      @question.save
+      @user_ids_array = @user_ids.uniq
+      @user_ids_array.each{|user_id| Request.create(request_params(user_id,@question.id))}
+    else
+      return nil
+    end
   end
 
   
