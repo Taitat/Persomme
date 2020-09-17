@@ -28,6 +28,10 @@ class PostsController < ApplicationController
     post.destroy
   end
 
+  def create_complete
+    @posts = Post.order("created_at DESC").limit(10)
+  end
+
 
   def characteristic_question
     if user_signed_in?

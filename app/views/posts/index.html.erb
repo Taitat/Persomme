@@ -39,11 +39,11 @@
         <%= render partial:'favorites/favorite', locals: {post: post} %>
       </div>
       <% get_characteristic(post)%>
-      <% @selected_ids.each do |selected_id|%>
-      <span class="selected-title">
-      <%= "##{selected_id.title}"%>
-      </span>
-      <%end%>
+        <% @selected_ids.each do |selected_id|%>
+          <span class="selected-title">
+            <%= "##{selected_id.title}"%>
+          </span>
+        <%end%>
       
     </div>
     <%end%>

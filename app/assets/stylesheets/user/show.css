@@ -17,7 +17,7 @@
   align-items:center;
   justify-content: center;
   background-color: white;
-  width: 70%;
+  width: 60%;
   height: 100%;
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
   border: 1px solid lightgray;
@@ -29,7 +29,7 @@
 .mypage-name{
   font-size: 6vh;
   background-color: white;
-  width:70%;
+  width:60%;
   height:40%;
   margin:0px 0px 10px 0;
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);

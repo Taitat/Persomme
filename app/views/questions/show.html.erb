@@ -1,28 +1,40 @@
 <%= render "shared/header"%>
 
+<div class="question-show-page">
+    <h1>質問一覧</h1>
+    <div class="question-show-card">
+        <p><%= @question.genre.name%></p>
+        <div class="question-show-title"><%= @question.title%></div>
+        <div class="question-show-content"><%= @question.content%></div>
+        <div class="question-show-image"><%= image_tag @question.image.variant(
+            resize_to_fill: [480, 320]
+            ) if @question.image.attached? %>
+        </div>
 
-<h1>質問一覧</h1>
+        
+    
 
-<div><%= @question.genre.name%></div>
-<div><%= @question.title%></div>
-<div><%= @question.content%></div>
-<div><%= image_tag @question.image.variant(
-    resize_to_fill: [640, 640]
-    ) if @question.image.attached? %>
+        <h2>この質問への回答</h2>
+        <div class="line"></div>
+        <% @answers.each do |answer|%>
+            <div class="question-show-answer">
+                <div class="question-show-name"><%= answer.user.nickname%></div>
+                <div class="question-show-content"><%= answer.content%></div>
+                <div class="question-show-image"><%= image_tag answer.image.variant(
+                    resize_to_fill: [480, 320]
+                    ) if answer.image.attached? %>
+                </div>
+            </div>
+        <%end%>
+            
+        
+
+        
+            <% if @posted.present?%>
+                <p class="post-btn">投稿済み</p>
+            <% else %>
+                <%= link_to 'この質問を投稿する',posts_path(question_id: @question.id), method: :post, local: true, class:"post-btn"%>
+            <% end %>
+        
+    </div>
 </div>
-
-<h1>回答</h1>
-<div><% @answers.each do |answer|%></div>
-<div><%= answer.user.nickname%></div>
-<div><%= answer.content%></div>
-<div><%= image_tag answer.image.variant(
-    resize_to_fill: [640, 640]
-    ) if answer.image.attached? %>
-</div>
-<%end%>
-
-<% if @posted.present?%>
-    <p>投稿済み</p>
-<% else %>
-    <%= link_to '投稿する',posts_path(question_id: @question.id), method: :post, local: true%>
-<% end %>

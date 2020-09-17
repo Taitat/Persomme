@@ -1,6 +1,6 @@
 .question-page{
+  margin-top: 20px;
   background-color: rgb(253, 253, 253);
-  
   display:flex;
   flex-direction:column;
   align-items: center;
@@ -10,7 +10,7 @@
 
 .question-form{
   background-color: white;
-  width: 70%;
+  width: 60%;
   height: 100%;
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
   border: 1px solid lightgray;
@@ -25,8 +25,76 @@
   font-size:5vh;
   font-size:3vw;
   margin-bottom:40px;
+  color:#522D80;
   
 
+}
+
+.persona-select{
+  padding-left :80px;
+  color:#666666;
+  margin: 5px 0;
+}
+
+.search-form p{
+  font-size:12px;
+  color:gray;
+  padding-left:80px;
+}
+
+
+.search-results{
+  margin-left: 80px;
+  border: 1px solid lightgray;
+  display: none;
+  border-radius: 20px;
+  padding:10px;
+  line-height: 40px;
+}
+
+.search-results span{
+  margin-left: 10px;
+  border: 1px solid #EAD9FF;
+  border-radius: 20px;
+  padding:7px;
+  background-color: #EAD9FF;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.1);
+  white-space: nowrap;
+}
+
+.create-persona{
+  display: flex;
+  align-items: center;
+}
+.persona-select{
+  display: flex;
+  align-items: center;
+}
+
+.select-characteristic span{
+  margin-left: 10px;
+  border: 1px solid #9057FF;
+  border-radius: 10px;
+  padding:7px;
+  background-color: #EAD9FF;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  font-weight: bold;
+
+}
+
+.select-characteristic{
+  display:none;
+  line-height: 40px;
+
+}
+
+.persona-field{
+  padding:4px 4px 4px 8px;
 }
 
 .form-list{
@@ -40,7 +108,10 @@
   padding-left:80px;
   color: #666666;
 }
+.genre{
+  margin-top:30px;
 
+}
 .genre-select{
   margin-bottom:15px;
 }
@@ -48,13 +119,14 @@
 .question-title{
   margin-bottom:15px;
   width:60%;
+  padding:7px 7px 7px 10px;
   
 }
 
 .content{
   text-align:left;
-  width:80%;
-  padding-bottom:220px;
+  width:90%;
+  padding:7px 10px 220px 10px;
   margin-bottom: 20px;
 }
 
@@ -65,5 +137,11 @@
 
 .submit-button{
   padding:10px 50px;
+  color:#FFF;
+  border: 1px solid #522D80;
+  border-radius: 24px;
+  background-color: #522D80;
+  outline: none;
+  cursor: pointer;
 }
 
