@@ -1,6 +1,10 @@
 class CharacteristicsController < ApplicationController
   def index
     @characteristic = Characteristic.new
+    yes_ids = UserCharacteristic.where(user_id: current_user.id).where(answer: "y").pluck(:characteristic_id)
+    no_ids = UserCharacteristic.where(user_id: current_user.id).where(answer: "n").pluck(:characteristic_id)
+    @characteristics_yes = Characteristic.where(id: yes_ids)
+    @characteristics_no = Characteristic.where(id: no_ids)
   end
 
   def create 

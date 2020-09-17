@@ -1,24 +1,51 @@
 <%= render "shared/header"%>
 
-<% if @characteristic == nil %>
-  <p> 未回答の属性はありません </p>
-<%else%>  
-  <%= @characteristic.name %>
-  <%= link_to 'YES', users_enchant_path(@characteristic, answer: "y"), method: :post, local: true %>
-  <%= link_to 'NO', users_enchant_path(@characteristic,answer: "n"), method: :post, local: true %>
-<%end%>
+<%# <div>
+  <select name="pulldown" id="pulldown">
+    <option value="new">新着順</option>
+    <option value="favorites">いいね順</option>
+  </select>
 
-
-<div class="post-field">
-  <% @posts.each do |post| %>
-  <div id="favorite-button-<%= post.id %>">
-    <%= render partial:'favorites/favorite', locals: {post: post} %>
+</div> %>
+<div class="main">
+  <div class="characteristic_question">
+    <% if @characteristic == nil %>
+      <p> 未回答の属性はありません </p>
+    <%else%>  
+      <p >あなたのことを教えてください</p>
+      <div class="characteristic-name">
+        <%= @characteristic.name %>
+        <%= link_to 'YES', users_enchant_path(@characteristic, answer: "y"), method: :post, local: true %>
+        <%= link_to 'NO', users_enchant_path(@characteristic,answer: "n"), method: :post, local: true %>
+      </div>
+    <%end%>
   </div>
-    <div><%= post.question.genre.name%></div>
-    <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id)%></div>
-    <div><%= image_tag post.question.image.variant(
-    resize_to_fill: [640, 640]
-    ) if post.question.image.attached? %>
-</div>
-  <%end%>
+  
+  
+  <div class="post-field">
+    <% @posts.each do |post| %>
+    <div class="post-card">
+      
+      <div><p><%= post.question.genre.name%></p></div>
+      <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id), class:"post-title"%></div>
+      <div class="post-image">
+      <% if post.question.image.attached? %>
+        <%= image_tag post.question.image.variant(resize_to_fill: [480, 320]) %>
+      <% else %>
+        <%= image_tag "dummy.png"%>
+      <%end%>
+      </div>
+      <div id="favorite-button-<%= post.id %>">
+        <%= render partial:'favorites/favorite', locals: {post: post} %>
+      </div>
+      <% get_characteristic(post)%>
+        <% @selected_ids.each do |selected_id|%>
+          <span class="selected-title">
+            <%= "##{selected_id.title}"%>
+          </span>
+        <%end%>
+      
+    </div>
+    <%end%>
+  </div>
 </div>

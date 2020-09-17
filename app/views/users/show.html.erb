@@ -9,10 +9,30 @@
 
     <div class="mypage-menu">
       <ul class="mypage-menu-list">
-        <li class="list-element"><%= link_to '質問一覧', questions_path%></li>
-        <li class="list-element"><%= link_to '回答依頼一覧', user_answers_path(:user_id)%></li>
-        <li class="list-element"><%= link_to '属性一覧', characteristics_path ,method: :get%></li>
-        <li class="list-element"><%= link_to 'いいねした投稿', users_favorites_path ,method: :get%></li>
+        <li class="list-element">
+          <%= link_to questions_path do%>
+            <%= image_tag "question.png"%>
+            <span class="list-name">質問一覧</span>
+          <%end%>
+        </li>
+        <li class="list-element">
+          <%= link_to user_answers_path(:user_id) do%>
+            <%= image_tag "writing.png"%>
+            <span class="list-name">回答依頼一覧</span>
+          <%end%>
+        </li>
+        <li class="list-element">
+          <%= link_to characteristics_path ,method: :get do%>
+            <%= image_tag "hand.png"%>
+            <span class="list-name">あなたのペルソナ</span>
+          <%end%>
+        </li>
+        <li class="list-element">
+          <%= link_to users_favorites_path ,method: :get do%>
+            <%= image_tag "heart.png"%>
+            <span class="list-name">いいねした投稿</span>
+          <%end%>
+        </li>
       </ul>
     </div>
   

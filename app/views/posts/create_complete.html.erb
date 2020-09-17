@@ -1,6 +1,9 @@
 <%= render "shared/header"%>
 
-<h1>投稿が完了しました</h1>
-
-<%= link_to '質問一覧へ戻る', questions_path%>
-<%= link_to 'トップページへ', root_path %>
+<div class="complete-page">
+  <h1>投稿が完了しました</h1>
+  <div class="select-pages">
+    <%= link_to '質問一覧へ戻る', questions_path%>
+    <%= link_to 'トップページへ', root_path(@posts) %>
+  </div>
+</div>

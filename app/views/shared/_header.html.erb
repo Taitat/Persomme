@@ -1,41 +1,44 @@
 <header>
 
 <div  class="top-page-header">
-  <div class="header-box">
-    <div class="header-left">
-      <div class="logo">
-        <%= link_to image_tag("persomme-logo.png", class:"persomme-icon"), "/"%>
-        </div>
-    <div class="answer_page">
-      <% if user_signed_in? %>
-      <%= link_to '回答する',user_answers_path(current_user.id), class:"answer-request-button"%>
-      <% else %>
-      <%= link_to '回答する',new_user_session_path,class:"answer-request-button"%>
-      <%end%>
+  <div class="logo-field">
+    <%= link_to image_tag("persomme-new-logo.png", class:"persomme-icon"), "/"%>
+  </div>
+      <div class="answer_page">
       
-    </div>
-    <form class="search-form" aciton="#">
-      <input class='input-box' placeholder='  PERSOMME内を検索'>
-      <button class="search-button">
-        <%= image_tag "search-button.png", class:"search-question-button" %>
-      </button>
-    </form>
-    </div>
+        <% if user_signed_in? %>
+        <%= link_to image_tag("writing.png", class:"answer-logo"), url: user_answers_path(current_user.id)%>
+        <%= link_to '回答する',user_answers_path(current_user.id), class:"answer-request-button"%>
+        <% else %>
+        <%= link_to image_tag("writing.png", class:"answer-logo"), url: new_user_session_path%>
+        <%= link_to '回答する',new_user_session_path,class:"answer-request-button"%>
+        <%end%>
+
+      </div>
+      <form class="header-search-form" aciton="#">
+        <input class='input-box' placeholder='  PERSOMME内を検索'>
+        <button class="search-button">
+          <%= image_tag "search-button.png", class:"search-question-button" %>
+        </button>
+      </form>
+    
 
     
-      <ul class="header-right-list">
+      
         <% if user_signed_in? %>
-          <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li> 
-          <li><%= link_to '質問する', new_question_path, class: "new-question" %></li> 
+        <div class="header-right">
+          <%= link_to image_tag("user.png", class:"user-logo"), url: user_path(current_user.id) %>
 
+          <div><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></div>
+          <div class="question-button"><%= link_to '質問する', new_question_path, class: "new-question" %> </div> 
+        </div>
         <% else %>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-
+         <div class="header-right">
+          <%= link_to 'ログイン', new_user_session_path, class: "login" %>
+          <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+        </div>
         <% end %>
-      </ul>
+      
     
   </div>
-
-</div>
 </header>

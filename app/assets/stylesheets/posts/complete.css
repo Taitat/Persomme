@@ -1,0 +1,24 @@
+
+.complete-page{
+  margin-top: 20px;
+  background-color: rgb(253, 253, 253);
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  height: 100%;
+}
+
+.complete-page h1{
+  padding: 20px 40px;
+  color:#522D80;;
+  font-size: 20px;
+  border: 1px solid #522D80;;
+  border-radius: 50px;
+  margin:30px 0;
+}
+
+.select-pages{
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+}

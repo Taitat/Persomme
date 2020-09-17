@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
       create_request()
       redirect_to root_path  
     else
-      render action: :new
+      render "questions/new"
     end
   end
   
@@ -39,10 +39,15 @@ class QuestionsController < ApplicationController
     selected_ids = params[:selected_ids]
     selected_ids_array = selected_ids.split(",")
     selected_ids_array.each do |selected_id|
-      user_ids = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(id: current_user.id).pluck(:user_id)
-      @user_ids_array = user_ids.uniq
+      users = []
+      users = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(id: current_user.id).pluck(:user_id)
+      users.each do |user|
+        @user_ids.push(user)
+      end
     end
-    @user_ids_array.each{|user_id| Request.create(question_id: @question.id, user_id: user_id)}
+    binding.pry
+    @user_ids_array = @user_ids.uniq
+    @user_ids_array.each{|user_id| Request.create(request_params(user_id,@question.id))}
   end
 
   
@@ -58,5 +63,8 @@ class QuestionsController < ApplicationController
     @p = Characteristic.ransack(params[:q])
   end
 
+  def request_params(user_id,question_id)
+    params.permit().merge(question_id: question_id, user_id: user_id, selected_ids: params[:selected_ids])
+  end
 
 end

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     characteristic_question
     @posts = Post.order("created_at DESC").limit(10)    
+    
   end
 
   def create
@@ -19,12 +20,16 @@ class PostsController < ApplicationController
     @question = Question.find(params[:question_id])
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = Comment.where(post_id: params[:id])
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
+  end
+
+  def create_complete
+    @posts = Post.order("created_at DESC").limit(10)
   end
 
 
