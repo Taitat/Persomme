@@ -42,6 +42,13 @@
           <div class='field-input'>
             <%= f.password_field :password_confirmation, autocomplete: "off"%>
           </div>
+          <div class="field-label">
+            <%= f.label :image %><br/>
+          </div>
+          <div class="field-inpupt">
+            <%= f.file_field :image %>
+          </div>
+
         </div>
         <div class='actions'>
           <%= f.submit "新規登録", class: 'btn'%>

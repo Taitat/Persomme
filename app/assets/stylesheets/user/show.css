@@ -25,9 +25,17 @@
   padding:50px;
 }
 
+.user-logo-with_show{
+  margin-right:10px;
+  width: 50px;
+  height: 50px;
+  border-radius:40px;
+  object-fit: cover;
+}
+
 
 .mypage-name{
-  font-size: 50px;
+  font-size: 40px;
   background-color: white;
   width:60%;
   height:40%;
@@ -35,9 +43,15 @@
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
   border: 1px solid lightgray;
   border-radius: 5px;
-  padding: 30px 20px 60px 60px;
+  padding: 20px 20px 60px 40px;
   display: flex;
   justify-content: space-between;
+  
+}
+
+.user-information h3{
+  display: flex;
+  align-items: center;
 }
 
 .logout{

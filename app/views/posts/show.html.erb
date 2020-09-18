@@ -3,7 +3,15 @@
 <div class="post-show-page">
     <div class="post-show-card">
      <div class="post-show-header">
-       <div><%= @question.user.nickname%></div>
+        <div class="user-information">
+            <%if @question.user.image.attached?%>
+                <%= image_tag @question.user.image,class:"user-logo-with_post" %>
+            <%else%>
+                <%= image_tag "dummy.png",class:"user-logo-with_post"%>
+            <%end%>
+            <%= @question.user.nickname%>
+            
+        </div>
          <div class="delete-btn">
              <% if user_signed_in? && current_user.id == @post.user.id%>
                  <%= link_to 'この投稿を削除', post_path, method: :delete %>

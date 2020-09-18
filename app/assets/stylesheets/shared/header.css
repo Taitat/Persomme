@@ -61,6 +61,10 @@
 .user-logo{
   margin-left: 2vw;
   margin-top: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius:40px;
+  object-fit: cover;
 }
 
 
