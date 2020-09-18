@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function() {
   })
  
 
-  $(document).on('keyup', 'input', function() {
+  $('.persona-select').on('keyup', 'input', function() {
     var keyword = $('#q_title_cont').val();
     $.ajax({
       url: '/questions/search',

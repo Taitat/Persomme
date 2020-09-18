@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
   def index
     characteristic_question
-    @posts = Post.order("created_at DESC").limit(10)    
+    genre_id = params[:id]
+    if genre_id != nil
+      question_ids = Question.where(genre_id: genre_id).pluck(:id)
+      @posts = Post.order("created_at DESC").where(question_id: question_ids).limit(10)
+    else    
+      @posts = Post.order("created_at DESC").limit(10)
+    end
     
   end
 

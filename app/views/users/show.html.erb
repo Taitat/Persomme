@@ -3,7 +3,14 @@
 <div class="mypage">
  
     <div class="mypage-name">
-      <h3><%= "#{@user.nickname}" %></h3>
+      <div class="user-information">
+        <%if @user.image.attached?%>
+            <%= image_tag @user.image,class:"user-logo-with_show" %>
+        <%else%>
+            <%= image_tag "dummy.png",class:"user-logo-with_show"%>
+        <%end%>
+        <h3><%= "#{@user.nickname}" %></h3>
+      </div>
       <%= link_to 'ログアウト',destroy_user_session_path,method: :delete, class:"logout" %>
     </div>
 

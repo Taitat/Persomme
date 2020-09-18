@@ -41,14 +41,14 @@ class QuestionsController < ApplicationController
       users = []
       @user_ids = []
       users = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(user_id: current_user.id).pluck(:user_id)
-      binding.pry
+      
       users.each do |user|
         @user_ids.push(user)
       end
     end
-    binding.pry
+    
     if @user_ids != []
-      binding.pry
+      
       @question.save
       @user_ids_array = @user_ids.uniq
       @user_ids_array.each{|user_id| Request.create(request_params(user_id,@question.id))}
