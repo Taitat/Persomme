@@ -27,7 +27,7 @@
 
 
 .mypage-name{
-  font-size: 6vh;
+  font-size: 50px;
   background-color: white;
   width:60%;
   height:40%;
@@ -35,7 +35,7 @@
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
   border: 1px solid lightgray;
   border-radius: 5px;
-  padding: 10px 20px 60px 60px;
+  padding: 30px 20px 60px 60px;
   display: flex;
   justify-content: space-between;
 }

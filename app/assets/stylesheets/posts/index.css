@@ -1,8 +1,8 @@
 .characteristic_question{
   width:40%;
-  margin: 10px auto;
+  margin: 25px auto;
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
-  border: 1px solid lightgray;
+  border: 1px solid #522D80;
   border-radius: 20px;
   padding: 30px;
 
@@ -36,6 +36,7 @@
 }
 .main{
   background-color: rgb(253, 253, 253);
+  position: relative;
 }
 
 .post-image{
@@ -93,3 +94,39 @@
   margin:10px 0 ;
 }
 
+.genre-search{
+  position:absolute;
+  top:128px;
+  left:12vw;
+  line-height: 50px;
+
+  width:15%;
+  margin: 10px auto;
+  box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 30px 50px;
+  
+}
+
+.genre-search a{
+  display: block;
+  color: #333;
+  font-size:1vw;
+
+}
+
+.nothing-posts{
+  text-align: center;
+  margin-top: 60px;
+  font-size: 30px;
+  color: #777777;
+}
+
+.all-genre{
+  font-size: 15px;
+  text-align: center;
+  padding:20px;
+  color:#522D80;
+  display: block;
+}

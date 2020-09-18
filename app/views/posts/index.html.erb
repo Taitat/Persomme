@@ -1,16 +1,30 @@
 <%= render "shared/header"%>
 
-<%# <div>
-  <select name="pulldown" id="pulldown">
-    <option value="new">新着順</option>
-    <option value="favorites">いいね順</option>
-  </select>
-
-</div> %>
 <div class="main">
+  
+  <div class="genre-search">
+    <%= link_to '経済',posts_path(id: 2), local: true%>
+    <%= link_to '政治',posts_path(id: 3), local: true%>
+    <%= link_to '健康',posts_path(id: 4), local: true%>
+    <%= link_to 'スポーツ',posts_path(id: 5), local: true%>
+    <%= link_to '国際',posts_path(id: 6), local: true%>
+    <%= link_to 'IT',posts_path(id: 7),local: true%>
+    <%= link_to 'ビジネス',posts_path(id: 8), local: true%>
+    <%= link_to '芸術',posts_path(id: 9), local: true%>
+    <%= link_to 'グルメ',posts_path(id: 10), local: true%>
+    <%= link_to '心理',posts_path(id: 11), local: true%>
+    <%= link_to '生活',posts_path(id: 12), local: true%>
+    <%= link_to '恋愛',posts_path(id: 13), local: true%>
+    <%= link_to 'お金',posts_path(id: 14), local: true%>
+    <%= link_to '人間関係',posts_path(id: 15), local:true%>
+    <%= link_to 'ファッション',posts_path(id: 16), local:true%>
+    <%= link_to '学問',posts_path(id: 17), local: true%>
+    <%= link_to 'ノージャンル',posts_path(id: 18), local:true%>
+  </div>
+  
   <div class="characteristic_question">
     <% if @characteristic == nil %>
-      <p> 未回答の属性はありません </p>
+      <p> 未回答のアンケートはありません </p>
     <%else%>  
       <p >あなたのことを教えてください</p>
       <div class="characteristic-name">
@@ -23,29 +37,34 @@
   
   
   <div class="post-field">
-    <% @posts.each do |post| %>
-    <div class="post-card">
-      
-      <div><p><%= post.question.genre.name%></p></div>
-      <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id), class:"post-title"%></div>
-      <div class="post-image">
-      <% if post.question.image.attached? %>
-        <%= image_tag post.question.image.variant(resize_to_fill: [480, 320]) %>
-      <% else %>
-        <%= image_tag "dummy.png"%>
-      <%end%>
-      </div>
-      <div id="favorite-button-<%= post.id %>">
-        <%= render partial:'favorites/favorite', locals: {post: post} %>
-      </div>
-      <% get_characteristic(post)%>
-        <% @selected_ids.each do |selected_id|%>
-          <span class="selected-title">
-            <%= "##{selected_id.title}"%>
-          </span>
+    <% if @posts == [] %>
+      <p class="nothing-posts">投稿はありません</p>
+      <%= link_to '全てのジャンルの質問を見る', '/', class:"all-genre"%>
+    <%else%>
+      <% @posts.each do |post| %>
+      <div class="post-card">
+
+        <div><p><%= post.question.genre.name%></p></div>
+        <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id), class:"post-title"%></div>
+        <div class="post-image">
+        <% if post.question.image.attached? %>
+          <%= image_tag post.question.image.variant(resize_to_fill: [480, 320]) %>
+        <% else %>
+          <%= image_tag "dummy.png"%>
         <%end%>
-      
-    </div>
+        </div>
+        <div id="favorite-button-<%= post.id %>">
+          <%= render partial:'favorites/favorite', locals: {post: post} %>
+        </div>
+        <% get_characteristic(post)%>
+          <% @selected_ids.each do |selected_id|%>
+            <span class="selected-title">
+              <%= "##{selected_id.title}"%>
+            </span>
+          <%end%>
+
+      </div>
+      <%end%>
     <%end%>
   </div>
 </div>
