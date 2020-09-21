@@ -69,3 +69,4 @@ gem 'active_hash'
 gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'ransack'
+gem "aws-sdk-s3", require: false

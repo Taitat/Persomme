@@ -87,7 +87,6 @@ RSpec.describe "Questions", type: :request do
     it "createアクションにリクエストすると正常にレスポンスが返ってくる" do
       @question2 = FactoryBot.build(:question)
       post questions_path(title: @question2.title, content: @question2.content, genre_id: @question2.genre_id, user_id: @user.id,selected_ids: @user_characteristics.id)
-      binding.pry
       expect(response).to redirect_to root_path
     end
   end
