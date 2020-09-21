@@ -6,7 +6,7 @@ class Question < ApplicationRecord
   validates :content, length: {minimum: 15}
   # validate :request_presence
 
-  has_one_attached :image
+  has_one_attached :image,dependent: :destroy
   has_many :requests
   has_many :answers
   has_one :post
