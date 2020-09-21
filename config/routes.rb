@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   
+  devise_for :users
+  
   get 'questions/search'
   get 'posts/create_complete'
-  get 'users/favorites'
+  
   post 'users/enchant'
   root to: "posts#index"
-  devise_for :users
+  
 
   resources :users, only: [:show] do
+    member do
+      get 'favorites'
+    end
     resources :answers, only: [:index,:show,:create]
   end
 

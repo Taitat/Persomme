@@ -22,6 +22,7 @@
     <%= link_to 'ノージャンル',posts_path(id: 18), local:true%>
   </div>
   
+  <%if user_signed_in?%>
   <div class="characteristic_question">
     <% if @characteristic == nil %>
       <p> 未回答のアンケートはありません </p>
@@ -34,6 +35,7 @@
       </div>
     <%end%>
   </div>
+  <%end%>
   
   
   <div class="post-field">

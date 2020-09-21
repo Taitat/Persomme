@@ -27,7 +27,7 @@
 
 .post-card{
   width:40%;
-  margin: 10px auto;
+  margin: 30px auto;
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -96,7 +96,7 @@
 
 .genre-search{
   position:absolute;
-  top:128px;
+  top:5px;
   left:12vw;
   line-height: 50px;
 
