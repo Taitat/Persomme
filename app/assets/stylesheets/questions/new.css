@@ -78,13 +78,13 @@
   border: 1px solid #9057FF;
   border-radius: 10px;
   padding:7px;
-  background-color: #EAD9FF;
+  background-color: #6b419e;
   font-size: 15px;
   cursor: pointer;
   box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
   white-space: nowrap;
   font-weight: bold;
-  color:#444444;
+  color:white;
 
 }
 
