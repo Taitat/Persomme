@@ -29,6 +29,10 @@ a{
  
 }
 
+div{
+  word-wrap:break-word;
+}
+
 body{
   font-family: -apple-system, sytem-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }

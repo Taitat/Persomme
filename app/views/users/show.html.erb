@@ -35,7 +35,7 @@
           <%end%>
         </li>
         <li class="list-element">
-          <%= link_to users_favorites_path ,method: :get do%>
+          <%= link_to favorites_user_path(@user) ,method: :get do%>
             <%= image_tag "heart.png"%>
             <span class="list-name">いいねした投稿</span>
           <%end%>
