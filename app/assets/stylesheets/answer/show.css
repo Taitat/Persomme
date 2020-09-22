@@ -51,8 +51,9 @@
   box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.1);
   border: 1px solid lightgray;
   border-radius: 5px;
-  padding: 30px;
+  padding: 10px 30px 30px;
   margin: 0 auto;
+  white-space:pre-wrap
 
 }
 .answer-show-card p{
@@ -64,15 +65,17 @@
 .answer-show-title{
   color:#333333;
   font-size:35px;
-  padding:3px 0 12px 0;
+  padding:3px 0 5px 0;
+  border-bottom:1px solid #333333;
 
 }
 
 .answer-show-content{
   color:#333333;
-  font-size:22px;
+  font-size:15px;
   font-weight: 300;
-  padding: 10px 0 30px 5px;
+  padding: 0px 0 20px 5px;
+  line-height: 30px;
 
 
 }

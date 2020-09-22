@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   post 'users/enchant'
   root to: "posts#index"
+  post '/posts/guest_sign_in', to: 'posts#new_guest'
   
 
   resources :users, only: [:show] do

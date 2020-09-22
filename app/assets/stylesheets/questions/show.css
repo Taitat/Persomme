@@ -31,6 +31,7 @@
   border-radius: 5px;
   padding: 30px;
   margin: 0 auto;
+  white-space:pre-wrap
 }
 
 .question-show-card p{
@@ -47,9 +48,9 @@
 
 .question-show-content{
   color:#333333;
-  font-size:16px;
+  font-size:13px;
   font-weight: 300;
-  padding: 10px 0 30px 5px;
+  padding: 0px 0 10px 5px;
 }
 
 .question-show-image img{
@@ -73,9 +74,9 @@
 .question-show-answer{
   border: 1px solid lightgray;
   border-radius: 10px;
-  margin-bottom:30px;
+  margin-bottom:5px;
   height:10%;
-  padding:10px;
+  padding:2px 10px;
 }
 
 .post-btn{
