@@ -18,7 +18,15 @@
         <div class="line"></div>
         <% @answers.each do |answer|%>
             <div class="question-show-answer">
-                <div class="question-show-name"><%= answer.user.nickname%></div>
+                <div class="user-information">
+                    <%if answer.user.image.attached?%>
+                        <%= image_tag answer.user.image,class:"user-logo-with_post" %>
+                    <%else%>
+                        <%= image_tag "dummy.png",class:"user-logo-with_post"%>
+                    <%end%>
+                    <div class="question-show-name"><%= answer.user.nickname%></div>
+                </div>
+                
                 <div class="question-show-content"><%= answer.content%></div>
                 <div class="question-show-image"><%= image_tag answer.image.variant(
                     resize_to_fill: [480, 320]

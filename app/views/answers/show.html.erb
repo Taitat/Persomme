@@ -5,7 +5,14 @@
 
 
   <div class="answer-show-card">
-    <span><%= @answer_request.question.user.nickname%></span>
+    <div class="user-information">
+      <%if @answer_request.question.user.image.attached?%>
+          <%= image_tag @answer_request.question.user.image,class:"user-logo-with_post" %>
+      <%else%>
+          <%= image_tag "dummy.png",class:"user-logo-with_post"%>
+      <%end%>
+      <span><%= @answer_request.question.user.nickname%></span>
+    </div>
     <p><%= @answer_request.question.genre.name%></p>
     <div class="answer-show-title"><%= @answer_request.question.title%></div>
     <div class="answer-show-content"><%= @answer_request.question.content%></div>

@@ -31,11 +31,9 @@ class QuestionsController < ApplicationController
       @question.save
       create_request()
       @user_ids_array.each{|user_id| Request.create!(request_params(user_id,@question.id))}
-      binding.pry
     end
     redirect_to root_path 
     rescue => e
-      binding.pry
     puts e.message
     render "questions/new"
     end
