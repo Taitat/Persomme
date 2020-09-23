@@ -61,6 +61,10 @@ group :production, :staging do
   gem 'rails_12factor'
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 gem 'devise'
 gem 'pry-rails'
 gem 'mini_magick'
