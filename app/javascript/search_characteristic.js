@@ -19,10 +19,6 @@ $(document).on('turbolinks:load', function() {
     $(this).remove();
   })
 
-  // $('#question-form').on("click","input",function(){
-  //   $('#search-results').css('display','none');
-  // });
-
   $(document).click(function(event) {
     if(!$(event.target).closest('#search-results','#select-characteristic').length) {
       $('#search-results').css('display','none');

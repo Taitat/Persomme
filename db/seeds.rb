@@ -270,7 +270,7 @@ Characteristic.create!(
       title:'文学に詳しい'
     },
     {
-      name: '本を一ヶ月に１０冊以上読みますか？',
+      name: '本を一ヶ月に10冊以上読みますか？',
       title:'本を一ヶ月に10冊以上読む'
     },
     {
@@ -314,8 +314,8 @@ Characteristic.create!(
       title:'運動神経がある'
     },
     {
-      name: '手芸が得意ですか？',
-      title:'手芸が得意'
+      name: '手芸が趣味ですか？',
+      title:'手芸が趣味'
     },
     {
       name: '起業したことがありますか？',
@@ -410,8 +410,8 @@ Characteristic.create!(
       title:'格闘技で何かしらの実績がある'
     },
     {
-      name: 'ゲームが得意ですか？',
-      title:'ゲームが得意'
+      name: 'ゲームを週3日以上プレイしますか？',
+      title:'ゲームをよくプレイする'
     },
     {
       name: '将棋が得意ですか？',
@@ -441,5 +441,6 @@ Characteristic.create!(
       name: 'ドラゴンクエストに詳しいですか？',
       title: 'ドラゴンクエストに詳しい'
     }
+    
   ]
 )
