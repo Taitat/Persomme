@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   
   get 'questions/search'
   get 'posts/create_complete'
+  get 'posts/search', to: "posts#search"
   
   post 'users/enchant'
   root to: "posts#index"
