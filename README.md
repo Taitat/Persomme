@@ -20,7 +20,7 @@ https://persommelier.herokuapp.com/
 <br>
   
 ## :green_book: 制作背景
-アパレルメーカーでブランドの立ち上げを行った際、  
+アパレルメーカーで新規ブランドの開発に携わった際、  
 想定するペルソナへのアンケートやリアクションがもっと簡単に取れればブランド開発しやすいだろうと考え、開発に至りました。  
 多くの人に使ってもらってペルソナの情報を蓄積できなければ機能しないので、どんな人にも使ってもらえるQ＆Aサイトとして開発しています。  
 <br>
@@ -80,16 +80,16 @@ https://persommelier.herokuapp.com/
 ◆Rails 6.0.0  
 <br>
 #### フロントサイド  
-◆HTML
-◆CSS
-◆javascript  
+◆HTML  
+◆CSS  
+◆javascript    
 ◆Jquery  
 <br>
 #### 開発環境  
 ◆MySQL2  
 <br>
 #### 本番環境  
-◆AWS (EC2、S3)  
+◆AWS (EC2、S3,VPC,Route53,RDS)    
 ◆MySQL2  
 <br>
 #### テスト  
