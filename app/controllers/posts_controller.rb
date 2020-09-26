@@ -1,19 +1,32 @@
 class PostsController < ApplicationController
+  
+
+
   def index
+    
     characteristic_question
-    genre_id = params[:id]
-    if genre_id != nil
-      question_ids = Question.where(genre_id: genre_id).pluck(:id)
-      @posts = Post.order("created_at DESC").where(question_id: question_ids).limit(10)
-    else    
-      @posts = Post.order("created_at DESC").limit(10)
+    if @p.conditions.present?
+      @posts = @p.result
+    else
+      genre_id = params[:id]
+      if genre_id != nil
+        question_ids = Question.where(genre_id: genre_id).pluck(:id)
+        @posts = Post.order("created_at DESC").where(question_id: question_ids).limit(10)
+      else    
+        @posts = Post.order("created_at DESC").limit(10)
+
+      end
     end
     
   end
 
+  def search
+    @posts = @p.result
+  end
+
   def create
     @question = Question.find(params[:question_id])
-    @post = Post.new(user_id: current_user.id, question_id: @question.id)
+    @post = Post.new(user_id: current_user.id, question_id: @question.id, title:@question.title, content:@question.content)
     if @post.save
       redirect_to '/posts/create_complete'
     else
@@ -49,7 +62,6 @@ class PostsController < ApplicationController
   end
 
   def new_guest
-    binding.pry
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
       user.nickname = "Guest"
       user.password = "password0"
@@ -62,5 +74,7 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
     
   end
+
+  
 
 end

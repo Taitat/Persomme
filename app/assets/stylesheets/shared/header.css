@@ -101,7 +101,7 @@
 .header-search-form{
   display: flex;
   align-items: center;
-  width: 40vw;
+  width: 32vw;
 }
 
 .input-box{
@@ -144,3 +144,16 @@
   margin-left:25px;
 }
 
+.fa-file-picture{
+  background-image: url("search-button.png");
+  background-repeat: no-repeat;
+  height:30px;
+  width:30px;
+  border-style:none;
+  margin-top:2px;
+  outline: none;
+  cursor: pointer;
+
+
+  text-indent: 100%;
+}
