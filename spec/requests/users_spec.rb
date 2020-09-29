@@ -43,7 +43,7 @@ RSpec.describe "UsersController", type: :request do
   end
 
   describe "GET #enchant" do
-    it "favoritesアクションにリクエストすると正常にレスポンスが返ってくる" do
+    it "enchantアクションにリクエストすると正常にレスポンスが返ってくる" do
       post  users_enchant_path(user_id: @user_1.id, characteristic_id: @characteristic.id, answer: "y")
       expect(response).to have_http_status(302)
     end

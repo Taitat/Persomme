@@ -1,8 +1,7 @@
 require 'rails_helper'
 RSpec.describe Question, type: :model do
   before do
-    @user1 = FactoryBot.create(:user)
-    @user2 = FactoryBot.create(:user)
+    @user = FactoryBot.create(:user)
     @question = FactoryBot.build(:question)
     @request = FactoryBot.build(:request)
   end
@@ -10,14 +9,7 @@ RSpec.describe Question, type: :model do
   describe '質問新規作成' do
     context '質問作成がうまくいく時' do
       it '全ての項目が存在すれば作成できる' do
-        @request.user_id = @user1.id
-        expect{
-        ActiveRecord::Base.transaction do
-          @question.save!
-          @request.question_id = @question.id
-          @request.save!
-        end
-        }.to change { Question.count }.by(1)
+        expect(@question).to be_valid
       end
     end
 
@@ -30,83 +22,38 @@ RSpec.describe Question, type: :model do
           @request.question_id = @question.id
           @request.save!
         end
-
         rescue => e
           expect(e.message).to include("Mysql2::Error: Field 'user_id' doesn't have a default value")
       end
 
-      it 'ジャンルが空のときは作成できない' do
-        @request.user_id = @user1.id
-        expect{
-        ActiveRecord::Base.transaction do
-          @question.genre_id = ""
-          @question.save!
-          @request.question_id = @question.id
-          @request.save!
-        end
-        }.to change { Question.count }.by(1)
-      rescue => e
-        expect(e.message).to include("Genre can't be blank")
+      it 'ユーザーがないときは作成できない' do
+        @question.genre_id= ""
+        @question.valid?
+        expect(@question.errors.full_messages).to include("Genre can't be blank")
       end
 
       it 'タイトルが空のときは作成できない' do
-        @request.user_id = @user1.id
-        expect{
-        ActiveRecord::Base.transaction do
-          @question.title = ""
-          @question.save!
-          @request.question_id = @question.id
-          @request.save!
-        end
-        }.to change { Question.count }.by(1)
-      rescue => e
-        expect(e.message).to include("Title can't be blank")
+        @question.title= ""
+        @question.valid?
+        expect(@question.errors.full_messages).to include("Title can't be blank")
       end
-
-      it 'タイトルが55文字以上のときは作成できない' do
-        @request.user_id = @user1.id
-        expect{
-        ActiveRecord::Base.transaction do
-          @question.title = Faker::Lorem.characters(number: 56)
-          @question.save!
-          @request.question_id = @question.id
-          @request.save!
-        end
-        }.to change { Question.count }.by(1)
-      rescue => e
-        expect(e.message).to include("Title is too long (maximum is 55 characters)")
-      end
-
       
+      it 'タイトルが55文字以上のときは作成できない' do
+        @question.title = Faker::Lorem.characters(number: 56)
+        @question.valid?
+        expect(@question.errors.full_messages).to include("Title is too long (maximum is 55 characters)")
+      end
 
       it '内容が空のときは作成できない' do
-        @request.user_id = @user1.id
-        expect{
-        ActiveRecord::Base.transaction do
-          @question.content = ""
-          @question.save!
-          @request.question_id = @question.id
-          @request.save!
-        end
-        }.to change { Question.count }.by(1)
-      rescue => e
-         
-        expect(e.message).to include("Content can't be blank")
+        @question.content= ""
+        @question.valid?
+        expect(@question.errors.full_messages).to include("Content can't be blank")
       end
 
       it '内容15文字以下のときは作成できない' do
-        @request.user_id = @user1.id
-        expect{
-        ActiveRecord::Base.transaction do
-          @question.content = Faker::Lorem.characters(number: 14)
-          @question.save!
-          @request.question_id = @question.id
-          @request.save!
-        end
-        }.to change { Question.count }.by(1)
-      rescue => e
-         
-        expect(e.message).to include("Content is too short (minimum is 15 characters)")
+        @question.content = Faker::Lorem.characters(number: 14)
+        @question.valid?
+        expect(@question.errors.full_messages).to include("Content is too short (minimum is 15 characters)")
       end
       
     end
