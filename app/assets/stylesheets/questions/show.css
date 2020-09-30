@@ -51,7 +51,7 @@
   font-size:13px;
   font-weight: 300;
   padding: 0px 0 10px 5px;
-  
+  white-space:pre-wrap
 }
 
 .question-show-image img{
@@ -69,7 +69,7 @@
 .question-show-name{
   font-size: 15px;
   color: #666;
-
+  padding:10px 0 20px 5px;
 }
 
 .question-show-answer{

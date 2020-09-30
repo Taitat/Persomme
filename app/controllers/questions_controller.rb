@@ -14,8 +14,8 @@ class QuestionsController < ApplicationController
 
 
   def search
-    @results = @p.result
-    if @p.result.length < 50
+    @results = @p_c.result
+    if @p_c.result.length < 50
     render json:  {results: @results}
     end
   end
@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @question = Question.new(question_params)
       ActiveRecord::Base.transaction do
       @question.save
@@ -34,13 +35,31 @@ class QuestionsController < ApplicationController
     end
     redirect_to root_path 
     rescue => e
+      binding.pry
     puts e.message
     render "questions/new"
     end
   end
 
  
+
+    
+      
+private
+def question_params
+  binding.pry
+  params.permit(:title, :content, :genre_id, :image).merge(user_id: current_user.id)
+end
+def search_characteristic
+  @p_c = Characteristic.ransack(params[:p])
+end
+
+def request_params(user_id,question_id)
+  params.permit().merge(question_id: question_id, user_id: user_id, selected_ids: params[:selected_ids])
+end
+
 def create_request
+  
    selected_ids = params[:selected_ids]
    selected_ids_array = selected_ids.split(",")
    selected_ids_array.each do |selected_id|
@@ -51,6 +70,7 @@ def create_request
      users.each do |user|
        @user_ids.push(user)
      end
+     binding.pry
    end
    
    if @user_ids != []
@@ -61,18 +81,6 @@ def create_request
    else
      return nil
    end
-end
-    
-      
-private
-def question_params
-  params.require(:question).permit(:title, :content, :genre_id, :image).merge(user_id: current_user.id)
-end
-def search_characteristic
-  @p = Characteristic.ransack(params[:q])
-end
-def request_params(user_id,question_id)
-  params.permit().merge(question_id: question_id, user_id: user_id, selected_ids: params[:selected_ids])
 end
 
 def move_to_index

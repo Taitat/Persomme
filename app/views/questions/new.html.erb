@@ -5,7 +5,7 @@
   <div class="question-form" id="question-form">
     <h1>質問はなんでしょうか？</h1>
       
-        <%= search_form_for @p, remote: true,id: "search-form",class:"search-form" ,url: questions_search_path do |f| %>
+        <%= search_form_for @p_c,as: :p, remote: true,id: "search-form",class:"search-form" ,url: questions_search_path do |f| %>
           <div class="persona-select"><%= f.label :title, 'ペルソナ' %></div>
           <p>質問したい相手の属性を検索してみましょう "得意" "子供" "英語" etc...</p>
           <div class="create-persona">

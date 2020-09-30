@@ -38,12 +38,12 @@ $(document).on('turbolinks:load', function() {
  
 
   $('.persona-select').on('keyup', 'input', function() {
-    var keyword = $('#q_title_cont').val();
+    var keyword = $('#p_title_cont').val();
     $.ajax({
       url: '/questions/search',
       type: 'GET',
       data: {
-        q: {title_cont:keyword}
+        p: {title_cont:keyword}
       },
     })
     .done(function(response){

@@ -17,8 +17,8 @@
       </div>
       <% if (controller_path == "questions" && action_name == "new")%>
         <%= search_form_for @p, url: root_path,class:"header-search-form" do |f| %>
-          <% f.label :title_cont%>
-          <%= f.text_field :title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
+          <% f.label :question_title_cont%>
+          <%= f.text_field :question_title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
           <%= f.submit class:"fa fa-file-picture"%>
         <% end %>
       <%else%>

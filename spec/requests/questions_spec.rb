@@ -3,12 +3,18 @@ require 'rails_helper'
 RSpec.describe "Questions", type: :request do
   before do
     @user = FactoryBot.create(:user)
+    @user2 = FactoryBot.create(:user)
     login_as(@user)
     @question = FactoryBot.build(:question)
+    @question2 = FactoryBot.build(:question)
     @question.user_id = @user.id
     @question.save
     @characteristic = FactoryBot.create(:characteristic)
-    @user_characteristics = FactoryBot.create(:user_characteristic)
+    @user_characteristics = FactoryBot.build(:user_characteristic)
+    @user_characteristics.user_id = @user2.id
+    @user_characteristics.characteristic_id = @characteristic.id
+    @user_characteristics.save
+
     
   end
 
@@ -81,12 +87,12 @@ RSpec.describe "Questions", type: :request do
 
   describe "POST #create" do
     it "createアクションにリクエストすると正常にレスポンスが返ってくる" do
-      post questions_path
-      expect(response).to have_http_status(200)
+      post questions_path(title: @question2.title, content: @question2.content, genre_id: @question2.genre_id, user_id: @user.id,selected_ids: @characteristic.id)
+      expect(response).to have_http_status(302)
     end
-    it "createアクションにリクエストすると正常にレスポンスが返ってくる" do
-      @question2 = FactoryBot.build(:question)
-      post questions_path(title: @question2.title, content: @question2.content, genre_id: @question2.genre_id, user_id: @user.id,selected_ids: @user_characteristics.id)
+    
+    it "createアクションにリクエストするとトップページにリダイレクトされる" do
+      post questions_path(title: @question2.title, content: @question2.content, genre_id: @question2.genre_id, user_id: @user.id,selected_ids: @characteristic.id)
       expect(response).to redirect_to root_path
     end
   end
