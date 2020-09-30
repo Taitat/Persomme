@@ -47,6 +47,13 @@ RSpec.describe "UsersController", type: :request do
       post  users_enchant_path(user_id: @user_1.id, characteristic_id: @characteristic.id, answer: "y")
       expect(response).to have_http_status(302)
     end
+
+    it "enchantアクションにリクエストするとトップページにリダイレクトされる" do
+      post  users_enchant_path(user_id: @user_1.id, characteristic_id: @characteristic.id, answer: "y")
+      expect(response.body).to redirect_to root_path
+    end
+
+
   end
 end
 
