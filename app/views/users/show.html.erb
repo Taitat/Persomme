@@ -11,7 +11,7 @@
         <%end%>
         <h3><%= "#{@user.nickname}" %></h3>
       </div>
-      <%= link_to 'ログアウト',destroy_user_session_path,method: :delete, class:"logout" %>
+      <%=  button_to 'ログアウト',destroy_user_session_path,method: :delete, class:"logout" %>
     </div>
 
     <div class="mypage-menu">
