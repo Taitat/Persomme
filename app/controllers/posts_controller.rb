@@ -61,19 +61,19 @@ class PostsController < ApplicationController
     
   end
 
-  def new_guest
-    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
-      user.nickname = "Guest"
-      user.password = "password0"
-      user.password_confirmation = "password0"
+  # def new_guest
+  #   user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+  #     user.nickname = "Guest"
+  #     user.password = "password0"
+  #     user.password_confirmation = "password0"
       
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-    end
+  #     # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+  #   end
     
-    sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  #   sign_in user
+  #   redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
     
-  end
+  # end
 
   
 

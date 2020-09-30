@@ -2,17 +2,18 @@ Rails.application.routes.draw do
   
   devise_for :users
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+    get '/users/sign_out' ,to: 'devise/sessions#destroy'
   end
-  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
   get 'questions/search'
   get 'posts/create_complete'
   get 'posts/search', to: "posts#search"
   
   post 'users/enchant'
   root to: "posts#index"
-  post '/posts/guest_sign_in', to: 'posts#new_guest'
-  
 
   resources :users, only: [:show] do
     member do

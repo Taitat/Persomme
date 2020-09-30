@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :search_characteristic, only: [:new, :search, :create]
-  before_action :move_to_index
+  before_action :correct_user, only: [:show]
 
   def index 
     @questions = Question.where(user_id: current_user.id)
@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    binding.pry
+    
     @question = Question.new(question_params)
       ActiveRecord::Base.transaction do
       @question.save
@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
     end
     redirect_to root_path 
     rescue => e
-      binding.pry
+      
     puts e.message
     render "questions/new"
     end
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
       
 private
 def question_params
-  binding.pry
+  
   params.require(:question).permit(:title, :content, :genre_id, :image).merge(user_id: current_user.id)
 end
 def search_characteristic
@@ -70,7 +70,7 @@ def create_request
      users.each do |user|
        @user_ids.push(user)
      end
-     binding.pry
+     
    end
    
    if @user_ids != []
@@ -83,9 +83,10 @@ def create_request
    end
 end
 
-def move_to_index
-  unless user_signed_in?
-    redirect_to new_user_registration_path
-  end
+def correct_user
+  @user = User.find(params[:id])
+    redirect_to(root_path) if current_user != @user
 end
+
+
 

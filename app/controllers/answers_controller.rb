@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :correct_user, only: [:index, :show, :create]
   def index
     @answer_requests = Request.where(user_id: current_user.id)
   end
@@ -29,6 +30,11 @@ class AnswersController < ApplicationController
   private
   def answer_params
     params.require(:answer).permit(:content,:question_id, :image).merge(user_id: params[:user_id])
+  end
+
+  def correct_user
+    @user = User.find(params[:user_id])
+      redirect_to(root_path) if current_user != @user
   end
 
 end

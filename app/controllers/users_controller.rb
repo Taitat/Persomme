@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :move_to_index, expect: [:new, :create]
+  before_action :correct_user, only: [:show, :favorite]
   
   def show
     @user = User.find(params[:id])
@@ -25,9 +25,8 @@ class UsersController < ApplicationController
 
 
   private
-  def move_to_index
-    unless user_signed_in?
-      redirect_to root_path
-    end
+  def correct_user
+    @user = User.find(params[:id])
+      redirect_to(root_path) if current_user != @user
   end
 end
