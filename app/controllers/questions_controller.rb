@@ -48,7 +48,7 @@ class QuestionsController < ApplicationController
 private
 def question_params
   binding.pry
-  params.permit(:title, :content, :genre_id, :image).merge(user_id: current_user.id)
+  params.require(:question).permit(:title, :content, :genre_id, :image).merge(user_id: current_user.id)
 end
 def search_characteristic
   @p_c = Characteristic.ransack(params[:p])
