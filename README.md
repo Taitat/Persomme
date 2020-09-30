@@ -58,13 +58,12 @@ https://persommelier.herokuapp.com/
 
 #### ②回答機能  
 あなたの持つペルソナに他のユーザーから質問が来ることがあります。  
-[![Image from Gyazo](https://i.gyazo.com/866f299ee242ce2d2700eec20558a7e3.gif)](https://gyazo.com/866f299ee242ce2d2700eec20558a7e3)  
-
+[![Image from Gyazo](https://i.gyazo.com/acbb7c014141f8c248b52b68cdb7e749.gif)](https://gyazo.com/acbb7c014141f8c248b52b68cdb7e749)
 
 
 #### ③投稿機能  
 質の良いQ＆Aは投稿し、他のユーザーに共有することができます。  
-[![Image from Gyazo](https://i.gyazo.com/b2da83dc851cee8f6d1a8810afafc141.gif)](https://gyazo.com/b2da83dc851cee8f6d1a8810afafc141)  
+[![Image from Gyazo](https://i.gyazo.com/447c62b8f5c331e12e62b14c3ca5068d.gif)](https://gyazo.com/447c62b8f5c331e12e62b14c3ca5068d)
 
 
 
