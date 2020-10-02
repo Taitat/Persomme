@@ -131,3 +131,31 @@
   display: block;
 }
 
+.books{
+  position: absolute;
+  top:5px;
+  left:70vw;
+  padding:20px;
+  text-align: center;
+  width:400px;
+}
+
+.books iframe{
+  text-align: center;
+}
+
+.books-2{
+  position: absolute;
+  top:600px;
+  left:70vw;
+  padding:20px;
+  text-align: center;
+  width:400px
+}
+
+.books-header{
+  color: #777777;
+  margin-bottom: 30px;
+  border-bottom: 1px solid  #777777;
+  padding-bottom:10px;
+}

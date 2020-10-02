@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+  get 'books/search'
   get 'questions/search'
   get 'posts/create_complete'
   get 'posts/search', to: "posts#search"
-  
   post 'users/enchant'
   root to: "posts#index"
 
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
   end
+
+
   
 
   
