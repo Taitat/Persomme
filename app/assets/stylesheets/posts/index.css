@@ -134,10 +134,10 @@
 .books{
   position: absolute;
   top:5px;
-  left:70vw;
+  left:72vw;
   padding:20px;
   text-align: center;
-  width:400px;
+  width:350px;
 }
 
 .books iframe{
@@ -147,10 +147,10 @@
 .books-2{
   position: absolute;
   top:600px;
-  left:70vw;
+  left:72vw;
   padding:20px;
   text-align: center;
-  width:400px
+  width:350px
 }
 
 .books-header{
