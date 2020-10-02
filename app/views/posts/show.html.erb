@@ -48,18 +48,23 @@
       
       <div class="comment-field">
         <div>
+            <% if user_signed_in?%>
             <div class="comment-form">
                 <%= form_with model: [@post,@comment], method: :post, local: true do |f| %>
                 <%= f.text_area :content, placeholder:"コメントを入力してください" %>
                 <%= f.submit '送信'%>
                 <%end%>
             </div>
+            <%end%>
 
             <div>
                 <% @comments.each do |comment|%>
                 <div class="comment">
                     <div class="comment-content"><%= comment.content%></div>
                     <p><%= comment.user.nickname%></p>
+                    <%if current_user.id == comment.user.id%>
+                        <%= link_to '削除',post_comment_path(post_id: @post.id,id: comment.id), method: :delete%>
+                    <%end%>
                 </div>
                 <%end%>
             </div>

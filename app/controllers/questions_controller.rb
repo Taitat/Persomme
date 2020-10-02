@@ -1,15 +1,19 @@
 class QuestionsController < ApplicationController
   before_action :search_characteristic, only: [:new, :search, :create]
-  before_action :correct_user, only: [:show]
+  before_action :authenticate_user!
+  
 
   def index 
     @questions = Question.where(user_id: current_user.id)
   end
 
   def show
+    
     @question = Question.find(params[:id])
+    @user = @question.user
     @answers = Answer.where(question_id: params[:id])
     @posted = Post.where(question_id: @question.id)
+    correct_user(@user)
   end
 
 
@@ -83,9 +87,10 @@ def create_request
    end
 end
 
-def correct_user
-  @user = User.find(params[:id])
-    redirect_to(root_path) if current_user != @user
+def correct_user(user)
+    if @user.id != current_user.id
+      redirect_to root_path
+    end
 end
 
 

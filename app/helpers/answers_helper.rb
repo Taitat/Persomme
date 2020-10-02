@@ -3,4 +3,16 @@ module AnswersHelper
       @selected_ids = Characteristic.where(id: request.selected_ids.split(","))
       return @selected_ids
   end
+
+  def answered?(question)
+    binding.pry
+
+    question.answers.each do |answer|
+      if answer.user_id == current_user.id
+        return true
+      else
+        return false
+      end
+    end
+  end
 end

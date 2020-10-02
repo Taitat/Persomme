@@ -13,9 +13,7 @@ RSpec.describe "Questions", type: :request do
     @user_characteristics = FactoryBot.build(:user_characteristic)
     @user_characteristics.user_id = @user2.id
     @user_characteristics.characteristic_id = @characteristic.id
-    @user_characteristics.save
-
-    
+    @user_characteristics.save    
   end
 
   describe "GET #index" do
@@ -87,12 +85,12 @@ RSpec.describe "Questions", type: :request do
 
   describe "POST #create" do
     it "createアクションにリクエストすると正常にレスポンスが返ってくる" do
-      post questions_path(title: @question2.title, content: @question2.content, genre_id: @question2.genre_id, user_id: @user.id,selected_ids: @characteristic.id)
+      post questions_path(question: {title: @question2.title, content: @question2.content, genre_id: @question2.genre_id}, user_id: @user.id,selected_ids: @characteristic.id)
       expect(response).to have_http_status(302)
     end
     
     it "createアクションにリクエストするとトップページにリダイレクトされる" do
-      post questions_path(title: @question2.title, content: @question2.content, genre_id: @question2.genre_id, user_id: @user.id,selected_ids: @characteristic.id)
+      post questions_path(question: {title: @question2.title, content: @question2.content, genre_id: @question2.genre_id}, user_id: @user.id,selected_ids: @characteristic.id)
       expect(response).to redirect_to root_path
     end
   end

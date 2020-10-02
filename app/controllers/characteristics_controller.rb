@@ -1,4 +1,6 @@
 class CharacteristicsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @characteristic = Characteristic.new
     yes_ids = UserCharacteristic.where(user_id: current_user.id).where(answer: "y").pluck(:characteristic_id)
@@ -9,6 +11,7 @@ class CharacteristicsController < ApplicationController
 
   def create 
     @characteristic = Characteristic.new(characteristic_params)
+    
     if @characteristic.save
       redirect_to characteristics_path
     else
@@ -22,6 +25,5 @@ class CharacteristicsController < ApplicationController
   def characteristic_params
     params.require(:characteristic).permit(:name)
   end
-
 
 end

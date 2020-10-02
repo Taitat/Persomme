@@ -25,10 +25,13 @@
       <div class="answer-content-field"><%= f.text_area :content, placeholder: '回答を入力してください'%></div>
       <div class="answer-image-field"><%= f.file_field :image%></div>
       <div><%= f.hidden_field :question_id, value: @question.id %></div>
+      <%if answered?(@question) %>
+      <div class="answer-submit-btn"><p>回答済み</p></div>
+      <%else%>
       <div class="answer-submit-btn"><%= f.submit '回答を送信'%></div>
+      <%end%>
     <%end%>
     </div>
 
   </div>
 </div>
-
