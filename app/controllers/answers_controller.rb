@@ -14,12 +14,11 @@ class AnswersController < ApplicationController
 
   def create
     answer = Answer.new(answer_params)
-    binding.pry
-    request = Request.where(user_id: current_user.id).where(question_id: answer.question.id)
+    request = answer.question.requests.find_by(user_id: current_user.id)
     if answer.save
       redirect_to user_answers_path
     else
-      redirect_to user_answer_path(user_id: answer.user_id, id: request.ids[0])
+      redirect_to user_answer_path(user_id: answer.user_id, id: request.id)
     end
   end
 
