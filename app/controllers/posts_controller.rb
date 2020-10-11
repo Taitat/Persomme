@@ -42,7 +42,6 @@ class PostsController < ApplicationController
   end
 
   def create_complete
-    @posts = Post.order("created_at DESC").limit(10)
   end
 
 
