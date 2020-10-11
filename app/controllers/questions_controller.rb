@@ -17,8 +17,8 @@ class QuestionsController < ApplicationController
 
 
   def search
-    results = @p_c.result
-    if @p_c.result.length < 50
+    results = @search_results.result
+    if results.length < 50
       render json:  {results: results}
     end
   end
@@ -48,7 +48,7 @@ class QuestionsController < ApplicationController
   end
 
   def search_characteristic
-    @p_c = Characteristic.ransack(params[:p])
+    @search_results = Characteristic.ransack(params[:p])
   end
 
   def request_params(user_id,question_id)
