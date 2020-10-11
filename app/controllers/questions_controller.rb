@@ -17,21 +17,19 @@ class QuestionsController < ApplicationController
 
 
   def search
-    @results = @p_c.result
+    results = @p_c.result
     if @p_c.result.length < 50
-      render json:  {results: @results}
+      render json:  {results: results}
     end
   end
 
   def new
     @question = Question.new
-    @characterictic = Characteristic.all
   end
 
   def create
     @question = Question.new(question_params)
       ActiveRecord::Base.transaction do
-        @question.save
         create_request()
         @user_ids_array.each{|user_id| Request.create!(request_params(user_id,@question.id))}
       end
@@ -42,10 +40,7 @@ class QuestionsController < ApplicationController
     end
   end
 
- 
 
-    
-      
   private
 
   def question_params
@@ -63,17 +58,21 @@ class QuestionsController < ApplicationController
   def create_request
     selected_ids = params[:selected_ids]
     selected_ids_array = selected_ids.split(",")
+    @receiving_users = []
+    users = []
     selected_ids_array.each do |selected_id|
-      users = []
-      @user_ids = []
-      users = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(user_id: current_user.id).pluck(:user_id)
+      if @receiving_users == []
+        users = UserCharacteristic.where(characteristic_id: selected_id).where(answer: "y").where.not(user_id: current_user.id)
+      else
+        users = @receiving_users.select{|u| u.characteristic_id = selected_id}
+      end
       users.each do |user|
-        @user_ids.push(user)
+        @receiving_users.push(user)
       end
     end
-    if @user_ids != []
+    if @receiving_user != []
       @question.save
-      @user_ids_array = @user_ids.uniq
+      @user_ids_array = @receiving_users.pluck(:user_id).uniq
     else
       return nil
     end
@@ -82,7 +81,6 @@ class QuestionsController < ApplicationController
   def correct_user(user)
     redirect_to root_path if @user.id != current_user.id
   end
-end
 
 
 
