@@ -2,18 +2,19 @@ class AnswersController < ApplicationController
   before_action :correct_user, only: [:index, :show, :create]
   
   def index
-    @answer_requests = Request.where(user_id: current_user.id)
+    @answer_requests = current_user.requests
   end
 
   def show
     @answer_request = Request.find(params[:id])
     @answer = Answer.new
     @user = User.find(params[:user_id])
-    @question = Question.find(@answer_request.question_id)
+    @question = @answer_request.question
   end
 
   def create
     answer = Answer.new(answer_params)
+    binding.pry
     request = Request.where(user_id: current_user.id).where(question_id: answer.question.id)
     if answer.save
       redirect_to user_answers_path

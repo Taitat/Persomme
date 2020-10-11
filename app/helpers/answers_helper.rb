@@ -5,12 +5,12 @@ module AnswersHelper
   end
 
   def answered?(question)
-    question.answers.each do |answer|
-      if answer.user_id == current_user.id
-        return true
-      else
-        return false
-      end
+    binding.pry
+    answer_users = question.answers.pluck(:user_id)
+    if answer_users.include?(current_user.id)
+      return true
+    else
+      return false
     end
   end
 end
