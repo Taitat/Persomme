@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   end
 
   def enchant
-    @user_characteristic = UserCharacteristic.new(user_id: current_user.id, characteristic_id: params[:format],answer: params[:answer])
-    if @user_characteristic.save
+    user_characteristic = UserCharacteristic.new(user_id: current_user.id, characteristic_id: params[:format],answer: params[:answer])
+    if user_characteristic.save
       redirect_to root_path
     else
       redirect_to root_path
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   private
 
   def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) if current_user != @user
+    user = User.find(params[:id])
+    redirect_to(root_path) if current_user != user
   end
 end

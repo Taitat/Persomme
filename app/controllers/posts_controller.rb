@@ -20,14 +20,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @question = Question.find(params[:question_id])
-    @post = Post.new(user_id: current_user.id, question_id: @question.id)
-    if @post.save
+    question = Question.find(params[:question_id])
+    post = Post.new(user_id: current_user.id, question_id: question.id)
+    if post.save
       redirect_to '/posts/create_complete'
     else
       render questions_path
     end
-
   end
 
   def show
