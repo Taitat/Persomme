@@ -4,11 +4,11 @@
   <h1>回答依頼の詳細</h1>
   <div class="answer-show-card">
     <div class="user-information">
-      <%if @answer_request.question.user.image.attached?%>
+      <% if @answer_request.question.user.image.attached?%>
         <%= image_tag @answer_request.question.user.image,class:"user-logo-with_post" %>
-      <%else%>
+      <% else %>
         <%= image_tag "dummy.png",class:"user-logo-with_post"%>
-      <%end%>
+      <% end %>
       <span><%= @answer_request.question.user.nickname%></span>
     </div>
 
@@ -22,7 +22,7 @@
     </div>
 
     <div class="answer-form">
-      <%= form_with model: [@user,@answer],local: true do |f|%>
+      <%= form_with model: [@user,@answer],local: true do |f| %>
         <div class="answer-content-field"><%= f.text_area :content, placeholder: '回答を入力してください'%></div>
         <div class="answer-image-field"><%= f.file_field :image%></div>
         <div><%= f.hidden_field :question_id, value: @question.id %></div>

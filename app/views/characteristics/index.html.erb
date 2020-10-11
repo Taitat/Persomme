@@ -7,24 +7,24 @@
       <span>新しいペルソナを作成</span>
       <%=f.text_field :name, placeholder: 'YES or NOで答えられる質問形式で入力してください', class:"persona-form"%>
       <%=f.submit '作成', class:"persona-create"%>
-    <%end%>
+    <% end %>
   </div>
 
   <div class="characteristics-list yes">
     <h1 class="yes-persona">あなたがYESと答えたペルソナ</h1>
     <div class="yes-list-field">
-      <% @characteristics_yes.each do |yes|%>
+      <% @characteristics_yes.each do |yes| %>
         <p><%=yes.title%></p>
-      <%end%>
+      <% end %>
     </div>
   </div>
 
   <div class="characteristics-list no">
     <h2>あなたがNOと答えたペルソナ</h2>
     <div class="no-list-field">
-      <% @characteristics_no.each do |no|%>
+      <% @characteristics_no.each do |no| %>
         <p><%=no.title%></p>
-      <%end%>
+      <% end %>
     </div>
   </div>
 </div>

@@ -19,13 +19,13 @@
         <%= f.text_field :question_title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
         <%= f.submit class:"fa fa-file-picture"%>
       <% end %>
-    <%else%>
+    <% else %>
       <%= search_form_for @p, url: root_path,class:"header-search-form" do |f| %>
         <% f.label :question_title_cont%>
         <%= f.text_field :question_title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
         <%= f.submit class:"fa fa-file-picture"%>
       <% end %>
-    <%end%>
+    <% end %>
 
 
 
@@ -34,9 +34,9 @@
       <div class="header-right">
         <%if current_user.image.attached?%>
           <%= image_tag current_user.image,class:"user-logo" %>
-        <%else%>
+        <% else %>
           <%= image_tag "dummy.png",class:"user-logo"%>
-        <%end%>
+        <% end %>
         <div><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></div>
         <div class="question-button"><%= link_to '質問する', new_question_path, class: "new-question" %> </div> 
       </div>

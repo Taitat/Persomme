@@ -1,7 +1,7 @@
 <%= render "shared/header"%>
 <div class="user-favorites-page">
   <h1>あなたがいいねした投稿</h1>
-  <%if @favorite_posts.present?%>
+  <% if @favorite_posts.present? %>
     <% @favorite_posts.each do |post| %>
       <div class="post-card">
         <div><p><%= post.question.genre.name%></p></div>
@@ -18,7 +18,7 @@
         </div>
         <% if post.question.requests.present? %>
           <% get_characteristic(post)%>
-          <% @selected_ids.each do |selected_id|%>
+          <% @selected_ids.each do |selected_id| %>
             <span class="selected-title">
               <%= "##{selected_id.title}"%>
             </span>

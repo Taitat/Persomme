@@ -22,27 +22,27 @@
     <%= link_to 'ノージャンル',posts_path(id: 18), local:true%>
   </div>
   
-  <%if user_signed_in?%>
+  <% if user_signed_in?%>
     <div class="characteristic_question">
       <% if @characteristic == nil %>
         <p> 未回答のアンケートはありません </p>
-      <%else%>  
+      <% else %>  
         <p >あなたのことを教えてください</p>
         <div class="characteristic-name">
           <%= @characteristic.name %>
           <%= link_to 'YES', users_enchant_path(@characteristic, answer: "y"), method: :post, local: true %>
           <%= link_to 'NO', users_enchant_path(@characteristic,answer: "n"), method: :post, local: true %>
         </div>
-      <%end%>
+      <% end %>
     </div>
-  <%end%>
+  <% end %>
   
   
   <div class="post-field">
     <% if @posts == [] %>
       <p class="nothing-posts">投稿はありません</p>
       <%= link_to '全てのジャンルの質問を見る', '/', class:"all-genre"%>
-    <%else%>
+    <% else %>
       <% @posts.each do |post| %>
         <div class="post-card">
           <div><p><%= post.question.genre.name%></p></div>
@@ -52,7 +52,7 @@
               <%= image_tag post.question.image.variant(resize_to_fill: [480, 320]) %>
             <% else %>
               <%= image_tag "dummy.png" %>
-            <%end%>
+            <% end %>
           </div>
           <div id="favorite-button-<%= post.id %>">
             <%= render partial:'favorites/favorite', locals: {post: post} %>
@@ -62,10 +62,10 @@
             <span class="selected-title">
               <%= "##{selected_id.title}"%>
             </span>
-          <%end%>
+          <% end %>
         </div>
-      <%end%>
-    <%end%>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="books">

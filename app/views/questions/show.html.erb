@@ -13,10 +13,10 @@
 
     <h2>この質問への回答</h2>
     <div class="line"></div>
-      <% @answers.each do |answer|%>
+      <% @answers.each do |answer| %>
         <div class="question-show-answer">
           <div class="user-information">
-            <% if answer.user.image.attached?%>
+            <% if answer.user.image.attached? %>
               <%= image_tag answer.user.image,class:"user-logo-with_post" %>
             <% else %>
               <%= image_tag "dummy.png",class:"user-logo-with_post"%>
@@ -30,9 +30,9 @@
             ) if answer.image.attached? %>
           </div>
         </div>
-      <%end%>
+      <% end %>
 
-      <% if @posted.present?%>
+      <% if @posted.present? %>
         <p class="post-btn">投稿済み</p>
       <% else %>
         <%= link_to 'この質問を投稿する',posts_path(question_id: @question.id), method: :post, local: true, class:"post-btn"%>

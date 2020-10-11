@@ -15,10 +15,10 @@
       
     <div class="search-results" id="search-results">
       <% if @results %>
-        <% @results.each do |result|%>
+        <% @results.each do |result| %>
           <%= result.title%>
-        <%end%>
-      <%end%>
+        <% end %>
+      <% end %>
     </div>
 
 
@@ -39,7 +39,7 @@
           <%=f.submit '送信',class:"submit-button",id:"question-submit"%>
         </div>
       </ul>
-    <%end%>
+    <% end %>
     
   </div>
 </div>
