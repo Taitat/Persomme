@@ -1,13 +1,14 @@
 <% if user_signed_in? %>
-    <% if post.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
-        <%=link_to post_favorite_path(post_id: post.id, id: "70"), method: :delete, remote: true do %>
-        <i class="fas fa-heart unlike-btn" ></i> <%= post.favorites.count%>
-        <%end%>
-    <% else %>
-        <%=link_to post_favorites_path(post.id), method: :post, remote: true do%>
-        <i class="far fa-heart like-btn"></i> <%= post.favorites.count%>
-        <%end%>
+  <% if post.favorited_by?(current_user) %> 
+    <%=link_to post_favorite_path(post_id: post.id, id: "70"), method: :delete, remote: true do %>
+      <i class="fas fa-heart unlike-btn" ></i> <%= post.favorites.count%>
     <% end %>
+  <% else %>
+    <%=link_to post_favorites_path(post.id), method: :post, remote: true do %>
+      <i class="far fa-heart like-btn"></i> 
+      <%= post.favorites.count %>
+    <% end %>
+  <% end %>
 <% else %>
-    <p class="sign-out-favorite"><i class="far fa-heart unlike-btn"></i><%= post.favorites.count %></p>
+  <p class="sign-out-favorite"> <i class="far fa-heart unlike-btn"></i> <%= post.favorites.count %> </p>
 <% end %>

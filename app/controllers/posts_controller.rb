@@ -1,9 +1,6 @@
 class PostsController < ApplicationController
-  
-
 
   def index
-    
     characteristic_question
     if @p.conditions.present?
       @posts = @p.result
@@ -14,25 +11,18 @@ class PostsController < ApplicationController
         @posts = Post.order("created_at DESC").where(question_id: question_ids).limit(10)
       else    
         @posts = Post.order("created_at DESC").limit(10)
-
       end
     end
-    
-  end
-
-  def search
-    @posts = @p.result
   end
 
   def create
-    @question = Question.find(params[:question_id])
-    @post = Post.new(user_id: current_user.id, question_id: @question.id)
-    if @post.save
+    question = Question.find(params[:question_id])
+    post = Post.new(user_id: current_user.id, question_id: question.id)
+    if post.save
       redirect_to '/posts/create_complete'
     else
       render questions_path
     end
-
   end
 
   def show
@@ -48,7 +38,6 @@ class PostsController < ApplicationController
   end
 
   def create_complete
-    @posts = Post.order("created_at DESC").limit(10)
   end
 
 
@@ -56,10 +45,6 @@ class PostsController < ApplicationController
     if user_signed_in?
       answered_characteristic_ids = UserCharacteristic.where(user_id: current_user.id).pluck(:characteristic_id)
     end
-    
     @characteristic = Characteristic.where.not(id: answered_characteristic_ids).order("rand()").limit(1)[0]
-    
   end
-
-
 end

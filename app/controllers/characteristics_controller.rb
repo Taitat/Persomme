@@ -10,14 +10,12 @@ class CharacteristicsController < ApplicationController
   end
 
   def create 
-    @characteristic = Characteristic.new(characteristic_params)
-    
-    if @characteristic.save
+    characteristic = Characteristic.new(characteristic_params)
+    if characteristic.save
       redirect_to characteristics_path
     else
       render action: :index
     end
-
   end
 
   private

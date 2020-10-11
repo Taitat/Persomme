@@ -1,20 +1,20 @@
 class FavoritesController < ApplicationController
-  before_action :post_and_question
+  before_action :post_find
   
   def create
     favorite = current_user.favorites.build(post_id: params[:post_id])
     favorite.save
   end
+  
   def destroy
-    favorite = Favorite.find_by(post_id: params[:post_id], user_id: current_user.id)
+    favorite = current_user.favorites.find_by(post_id: @post.id)
     favorite.destroy
   end
 
   private
 
-  def post_and_question
+  def post_find
     @post = Post.find(params[:post_id])
-    @question = Question.find(@post.question.id)
   end
 
 end

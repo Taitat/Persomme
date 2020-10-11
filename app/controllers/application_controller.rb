@@ -4,14 +4,11 @@ class ApplicationController < ActionController::Base
   # before_action :basic_auth
   before_action :search_posts
 
-  
   private
 
   def configure_permitted_paramerters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :image])
   end
-
-  
 
   # def basic_auth
   #   authenticate_or_request_with_http_basic do |username, password|
@@ -20,10 +17,6 @@ class ApplicationController < ActionController::Base
   # end
 
   def search_posts
-      @p = Post.ransack(params[:q])
-      @posts = @p.result
+    @p = Post.ransack(params[:q])
   end
-
-
-
 end

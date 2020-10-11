@@ -2,35 +2,40 @@
 
 <div class="answer-show-page">
   <h1>回答依頼の詳細</h1>
-
-
   <div class="answer-show-card">
     <div class="user-information">
-      <%if @answer_request.question.user.image.attached?%>
-          <%= image_tag @answer_request.question.user.image,class:"user-logo-with_post" %>
-      <%else%>
-          <%= image_tag "dummy.png",class:"user-logo-with_post"%>
-      <%end%>
+      <% if @answer_request.question.user.image.attached?%>
+        <%= image_tag @answer_request.question.user.image,class:"user-logo-with_post" %>
+      <% else %>
+        <%= image_tag "dummy.png",class:"user-logo-with_post"%>
+      <% end %>
       <span><%= @answer_request.question.user.nickname%></span>
     </div>
+
     <p><%= @answer_request.question.genre.name%></p>
+
     <div class="answer-show-title"><%= @answer_request.question.title%></div>
     <div class="answer-show-content"><%= @answer_request.question.content%></div>
     <div class="answer-show-image"><%= image_tag @answer_request.question.image.variant(
         resize_to_fill: [480, 320]
         ) if @answer_request.question.image.attached? %>
     </div>
+
     <div class="answer-form">
-    <%= form_with model: [@user,@answer],local: true do |f|%>
-      <div class="answer-content-field"><%= f.text_area :content, placeholder: '回答を入力してください'%></div>
-      <div class="answer-image-field"><%= f.file_field :image%></div>
-      <div><%= f.hidden_field :question_id, value: @question.id %></div>
-      <%if answered?(@question) %>
-      <div class="answer-submit-btn"><p>回答済み</p></div>
-      <%else%>
-      <div class="answer-submit-btn"><%= f.submit '回答を送信'%></div>
-      <%end%>
-    <%end%>
+      <%= form_with model: [@user,@answer],local: true do |f| %>
+        <div class="answer-content-field"><%= f.text_area :content, placeholder: '回答を入力してください'%></div>
+        <div class="answer-image-field"><%= f.file_field :image%></div>
+        <div><%= f.hidden_field :question_id, value: @question.id %></div>
+        <% if answered?(@question) %>
+          <div class="answer-submit-btn">
+            <p>回答済み</p>
+          </div>
+        <% else %>
+          <div class="answer-submit-btn">
+            <%= f.submit '回答を送信'%>
+          </div>
+        <% end %>
+      <% end %>
     </div>
 
   </div>

@@ -1,48 +1,41 @@
 <%= render "shared/header"%>
 
 <div class="question-show-page">
-    <h1>質問の詳細</h1>
-    <div class="question-show-card">
-        <p><%= @question.genre.name%></p>
-        <div class="question-show-title"><%= @question.title%></div>
-        <div class="question-show-content"><%= @question.content%></div>
-        <div class="question-show-image"><%= image_tag @question.image.variant(
-            resize_to_fill: [480, 320]
-            ) if @question.image.attached? %>
-        </div>
-
-        
-    
-
-        <h2>この質問への回答</h2>
-        <div class="line"></div>
-        <% @answers.each do |answer|%>
-            <div class="question-show-answer">
-                <div class="user-information">
-                    <%if answer.user.image.attached?%>
-                        <%= image_tag answer.user.image,class:"user-logo-with_post" %>
-                    <%else%>
-                        <%= image_tag "dummy.png",class:"user-logo-with_post"%>
-                    <%end%>
-                    <div class="question-show-name"><%= answer.user.nickname%></div>
-                </div>
-                
-                <div class="question-show-content"><%= answer.content%></div>
-                <div class="question-show-image"><%= image_tag answer.image.variant(
-                    resize_to_fill: [480, 320]
-                    ) if answer.image.attached? %>
-                </div>
-            </div>
-        <%end%>
-            
-        
-
-        
-            <% if @posted.present?%>
-                <p class="post-btn">投稿済み</p>
-            <% else %>
-                <%= link_to 'この質問を投稿する',posts_path(question_id: @question.id), method: :post, local: true, class:"post-btn"%>
-            <% end %>
-        
+  <h1>質問の詳細</h1>
+  <div class="question-show-card">
+    <p><%= @question.genre.name%></p>
+    <div class="question-show-title"><%= @question.title%></div>
+    <div class="question-show-content"><%= @question.content%></div>
+    <div class="question-show-image"><%= image_tag @question.image.variant(
+      resize_to_fill: [480, 320]
+      ) if @question.image.attached? %>
     </div>
+
+    <h2>この質問への回答</h2>
+    <div class="line"></div>
+      <% @answers.each do |answer| %>
+        <div class="question-show-answer">
+          <div class="user-information">
+            <% if answer.user.image.attached? %>
+              <%= image_tag answer.user.image,class:"user-logo-with_post" %>
+            <% else %>
+              <%= image_tag "dummy.png",class:"user-logo-with_post"%>
+            <% end %>
+            <div class="question-show-name"><%= answer.user.nickname%></div>
+          </div>
+
+          <div class="question-show-content"><%= answer.content%></div>
+          <div class="question-show-image"><%= image_tag answer.image.variant(
+            resize_to_fill: [480, 320]
+            ) if answer.image.attached? %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @posted.present? %>
+        <p class="post-btn">投稿済み</p>
+      <% else %>
+        <%= link_to 'この質問を投稿する',posts_path(question_id: @question.id), method: :post, local: true, class:"post-btn"%>
+      <% end %>
+  </div>
 </div>

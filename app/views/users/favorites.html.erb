@@ -1,34 +1,30 @@
 <%= render "shared/header"%>
 <div class="user-favorites-page">
-    
-        <h1>あなたがいいねした投稿</h1>
-        <%if @favorite_posts.present?%>
-        <% @favorite_posts.each do |post| %>
-        <div class="post-card">
-
-          <div><p><%= post.question.genre.name%></p></div>
-          <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id), class:"post-title"%></div>
-          <div class="post-image">
+  <h1>あなたがいいねした投稿</h1>
+  <% if @favorite_posts.present? %>
+    <% @favorite_posts.each do |post| %>
+      <div class="post-card">
+        <div><p><%= post.question.genre.name%></p></div>
+        <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id), class:"post-title"%></div>
+        <div class="post-image">
           <% if post.question.image.attached? %>
             <%= image_tag post.question.image.variant(resize_to_fill: [480, 320]) %>
           <% else %>
             <%= image_tag "dummy.png"%>
-          <%end%>
-          </div>
-          <div id="favorite-button-<%= post.id %>">
-            <%= render partial:'favorites/favorite', locals: {post: post} %>
-          </div>
-          <% if post.question.requests.present? %>
-            <% get_characteristic(post)%>
-              <% @selected_ids.each do |selected_id|%>
-                <span class="selected-title">
-                  <%= "##{selected_id.title}"%>
-                </span>
-              <%end%>
-          <%end%>
-
+          <% end %>
         </div>
-        <%end%>
-        <%end%>
-    
+        <div id="favorite-button-<%= post.id %>">
+          <%= render partial:'favorites/favorite', locals: {post: post} %>
+        </div>
+        <% if post.question.requests.present? %>
+          <% get_characteristic(post)%>
+          <% @selected_ids.each do |selected_id| %>
+            <span class="selected-title">
+              <%= "##{selected_id.title}"%>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

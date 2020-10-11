@@ -1,77 +1,73 @@
 <%= render "shared/header"%>
 
 <div class="post-show-page">
-    <div class="post-show-card">
-     <div class="post-show-header">
-        <div class="user-information">
-            <%if @question.user.image.attached?%>
-                <%= image_tag @question.user.image,class:"user-logo-with_post" %>
-            <%else%>
-                <%= image_tag "dummy.png",class:"user-logo-with_post"%>
-            <%end%>
-            <%= @question.user.nickname%>
-            
-        </div>
-         <div class="delete-btn">
-             <% if user_signed_in? && current_user.id == @post.user.id%>
-                 <%= link_to 'この投稿を削除', post_path, method: :delete %>
-             <% end %>
-         </div>
-     </div>
-      <p><%= @question.genre.name%></p>
-      <div class="question-show-title"><%= @question.title%></div>
-      <div class="question-show-content"><%= @question.content%></div>
-      <div class="question-show-image"><%= image_tag @question.image.variant(
+  <div class="post-show-card">
+    <div class="post-show-header">
+      <div class="user-information">
+        <% if @question.user.image.attached? %>
+          <%= image_tag @question.user.image,class:"user-logo-with_post" %>
+        <% else %>
+          <%= image_tag "dummy.png",class:"user-logo-with_post"%>
+        <% end %>
+        <%= @question.user.nickname%>
+      </div>
+      <div class="delete-btn">
+        <% if user_signed_in? && current_user.id == @post.user.id %>
+          <%= link_to 'この投稿を削除', post_path, method: :delete %>
+        <% end %>
+      </div>
+    </div>
+    
+    <p><%= @question.genre.name%></p>
+    <div class="question-show-title"><%= @question.title%></div>
+    <div class="question-show-content"><%= @question.content%></div>
+    <div class="question-show-image"><%= image_tag @question.image.variant(
+        resize_to_fill: [640, 640]
+        ) if @question.image.attached? %>
+    </div>
+      
+    <h2>この質問への回答</h2>
+    <div class="line"></div>
+
+    <% @question.answers.each do |answer| %>
+      <div class="question-show-answer" >
+        <div class="question-show-name"><%= answer.user.nickname%></div>
+        <div class="question-show-content"><%= answer.content%></div>
+        <div class="question-show-image"><%= image_tag answer.image.variant(
           resize_to_fill: [640, 640]
-          ) if @question.image.attached? %>
-      </div>
-      
-
-      <h2>この質問への回答</h2>
-      <div class="line"></div>
-
-
-     
-        <% @question.answers.each do |answer|%>
-         <div class="question-show-answer" >
-            <div class="question-show-name"><%= answer.user.nickname%></div>
-            <div class="question-show-content"><%= answer.content%></div>
-            <div class="question-show-image"><%= image_tag answer.image.variant(
-                resize_to_fill: [640, 640]
-                ) if answer.image.attached? %>
-            </div>
-        </div>
-        <%end%>
-      
-      <h2>コメント</h2>
-      <div class="line"></div>
-      
-      <div class="comment-field">
-        <div>
-            <% if user_signed_in?%>
-            <div class="comment-form">
-                <%= form_with model: [@post,@comment], method: :post, local: true do |f| %>
-                <%= f.text_area :content, placeholder:"コメントを入力してください" %>
-                <%= f.submit '送信'%>
-                <%end%>
-            </div>
-            <%end%>
-
-            <div>
-                <% @comments.each do |comment|%>
-                <div class="comment">
-                    <div class="comment-content"><%= comment.content%></div>
-                    <p><%= comment.user.nickname%></p>
-                    <%if current_user.id == comment.user.id%>
-                        <%= link_to '削除',post_comment_path(post_id: @post.id,id: comment.id), method: :delete%>
-                    <%end%>
-                </div>
-                <%end%>
-            </div>
-        </div>
-        <div id="favorite-button" class="favorite-button-show">
-            <%= render partial:'favorites/favorite', locals: {post: @post} %>
+          ) if answer.image.attached? %>
         </div>
       </div>
-   </div>
+    <% end %>
+      
+    <h2>コメント</h2>
+    <div class="line"></div>
+      
+    <div class="comment-field">
+
+        <% if user_signed_in? %>
+          <div class="comment-form">
+            <%= form_with model: [@post,@comment], method: :post, local: true do |f| %>
+            <%= f.text_area :content, placeholder:"コメントを入力してください" %>
+            <%= f.submit '送信'%>
+            <% end %>
+          </div>
+        <% end %>
+        
+        <% @comments.each do |comment| %>
+          <div class="comment">
+            <div class="comment-content"><%= comment.content%></div>
+            <p><%= comment.user.nickname%></p>
+            <% if current_user.id == comment.user.id %>
+              <%= link_to '削除',post_comment_path(post_id: @post.id,id: comment.id), method: :delete%>
+            <% end %>
+          </div>
+        <% end %>
+
+      <div id="favorite-button" class="favorite-button-show">
+          <%= render partial:'favorites/favorite', locals: {post: @post} %>
+      </div>
+
+    </div>
+  </div>
 </div>

@@ -1,47 +1,44 @@
 <%= render "shared/header"%>
 
 <div class="mypage">
- 
-    <div class="mypage-name">
-      <div class="user-information">
-        <%if @user.image.attached?%>
-            <%= image_tag @user.image,class:"user-logo-with_show" %>
-        <%else%>
-            <%= image_tag "dummy.png",class:"user-logo-with_show"%>
-        <%end%>
-        <h3><%= "#{@user.nickname}" %></h3>
-      </div>
-      <%=  button_to 'ログアウト',destroy_user_session_path,method: :delete, class:"logout" %>
+  <div class="mypage-name">
+    <div class="user-information">
+      <% if @user.image.attached? %>
+          <%= image_tag @user.image,class:"user-logo-with_show" %>
+      <% else %>
+          <%= image_tag "dummy.png",class:"user-logo-with_show"%>
+      <% end %>
+      <h3><%= "#{@user.nickname}" %></h3>
     </div>
+    <%=  button_to 'ログアウト',destroy_user_session_path,method: :delete, class:"logout" %>
+  </div>
 
-    <div class="mypage-menu">
-      <ul class="mypage-menu-list">
-        <li class="list-element">
-          <%= link_to questions_path do%>
-            <%= image_tag "question.png"%>
-            <span class="list-name">質問一覧</span>
-          <%end%>
-        </li>
-        <li class="list-element">
-          <%= link_to user_answers_path(@user) do%>
-            <%= image_tag "writing.png"%>
-            <span class="list-name">回答依頼一覧</span>
-          <%end%>
-        </li>
-        <li class="list-element">
-          <%= link_to characteristics_path ,method: :get do%>
-            <%= image_tag "hand.png"%>
-            <span class="list-name">あなたのペルソナ</span>
-          <%end%>
-        </li>
-        <li class="list-element">
-          <%= link_to favorites_user_path(@user) ,method: :get do%>
-            <%= image_tag "heart.png"%>
-            <span class="list-name">いいねした投稿</span>
-          <%end%>
-        </li>
-      </ul>
-    </div>
-  
-  
+  <div class="mypage-menu">
+    <ul class="mypage-menu-list">
+      <li class="list-element">
+        <%= link_to questions_path do %>
+          <%= image_tag "question.png"%>
+          <span class="list-name">質問一覧</span>
+        <% end %>
+      </li>
+      <li class="list-element">
+        <%= link_to user_answers_path(@user) do %>
+          <%= image_tag "writing.png"%>
+          <span class="list-name">回答依頼一覧</span>
+        <% end %>
+      </li>
+      <li class="list-element">
+        <%= link_to characteristics_path ,method: :get do %>
+          <%= image_tag "hand.png"%>
+          <span class="list-name">あなたのペルソナ</span>
+        <% end %>
+      </li>
+      <li class="list-element">
+        <%= link_to favorites_user_path(@user) ,method: :get do %>
+          <%= image_tag "heart.png"%>
+          <span class="list-name">いいねした投稿</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
 </div>
