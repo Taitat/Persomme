@@ -15,10 +15,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def search
-    @posts = @p.result
-  end
-
   def create
     question = Question.find(params[:question_id])
     post = Post.new(user_id: current_user.id, question_id: question.id)

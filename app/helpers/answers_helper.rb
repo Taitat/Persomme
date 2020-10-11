@@ -5,7 +5,6 @@ module AnswersHelper
   end
 
   def answered?(question)
-    binding.pry
     answer_users = question.answers.pluck(:user_id)
     if answer_users.include?(current_user.id)
       return true
