@@ -23,18 +23,18 @@
   </div>
   
   <%if user_signed_in?%>
-  <div class="characteristic_question">
-    <% if @characteristic == nil %>
-      <p> 未回答のアンケートはありません </p>
-    <%else%>  
-      <p >あなたのことを教えてください</p>
-      <div class="characteristic-name">
-        <%= @characteristic.name %>
-        <%= link_to 'YES', users_enchant_path(@characteristic, answer: "y"), method: :post, local: true %>
-        <%= link_to 'NO', users_enchant_path(@characteristic,answer: "n"), method: :post, local: true %>
-      </div>
-    <%end%>
-  </div>
+    <div class="characteristic_question">
+      <% if @characteristic == nil %>
+        <p> 未回答のアンケートはありません </p>
+      <%else%>  
+        <p >あなたのことを教えてください</p>
+        <div class="characteristic-name">
+          <%= @characteristic.name %>
+          <%= link_to 'YES', users_enchant_path(@characteristic, answer: "y"), method: :post, local: true %>
+          <%= link_to 'NO', users_enchant_path(@characteristic,answer: "n"), method: :post, local: true %>
+        </div>
+      <%end%>
+    </div>
   <%end%>
   
   
@@ -44,31 +44,30 @@
       <%= link_to '全てのジャンルの質問を見る', '/', class:"all-genre"%>
     <%else%>
       <% @posts.each do |post| %>
-      <div class="post-card">
-
-        <div><p><%= post.question.genre.name%></p></div>
-        <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id), class:"post-title"%></div>
-        <div class="post-image">
-        <% if post.question.image.attached? %>
-          <%= image_tag post.question.image.variant(resize_to_fill: [480, 320]) %>
-        <% else %>
-          <%= image_tag "dummy.png"%>
-        <%end%>
-        </div>
-        <div id="favorite-button-<%= post.id %>">
-          <%= render partial:'favorites/favorite', locals: {post: post} %>
-        </div>
-        <% get_characteristic(post)%>
+        <div class="post-card">
+          <div><p><%= post.question.genre.name%></p></div>
+          <div><%= link_to post.question.title, post_path(id: post.id, question_id: post.question.id), class:"post-title"%></div>
+          <div class="post-image">
+            <% if post.question.image.attached? %>
+              <%= image_tag post.question.image.variant(resize_to_fill: [480, 320]) %>
+            <% else %>
+              <%= image_tag "dummy.png" %>
+            <%end%>
+          </div>
+          <div id="favorite-button-<%= post.id %>">
+            <%= render partial:'favorites/favorite', locals: {post: post} %>
+          </div>
+          <% get_characteristic(post)%>
           <% @selected_ids.each do |selected_id|%>
             <span class="selected-title">
               <%= "##{selected_id.title}"%>
             </span>
           <%end%>
-
-      </div>
+        </div>
       <%end%>
     <%end%>
   </div>
+
   <div class="books">
   <p class="books-header">読書をよくする あなたにおすすめ</p>
     <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=FFFFFF&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=persomme-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4297114119&linkId=604f98b7100a9f98e2bac873b52f607f"></iframe>
@@ -87,5 +86,4 @@
     <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=persomme-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B073CD4KYY&linkId=77fb023a0456214e8128774ed2d09bc1"></iframe>
   </div>
 
-  
 </div>

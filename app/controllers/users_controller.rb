@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     render status: 200
-    
   end
 
   def favorites
@@ -21,12 +20,10 @@ class UsersController < ApplicationController
     end
   end
 
-  
-
-
   private
+
   def correct_user
     @user = User.find(params[:id])
-      redirect_to(root_path) if current_user != @user
+    redirect_to(root_path) if current_user != @user
   end
 end

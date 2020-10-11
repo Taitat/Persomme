@@ -1,7 +1,6 @@
 
 $(document).on('turbolinks:load', function() {
   $('#search-results').on("click","span",function(){
-    
     var selected_html = $(this).html();
     var selected_id = $(this).attr("id");
     var select_list = $('#select-characteristic').html();
@@ -9,7 +8,6 @@ $(document).on('turbolinks:load', function() {
       console.log("選択済みです");
     }
     else{
-    
       $('#select-characteristic').html(`${select_list} <span class="selected" id="${selected_id}">${selected_html}</span>`);
       $('#select-characteristic').css('display','block');
     }

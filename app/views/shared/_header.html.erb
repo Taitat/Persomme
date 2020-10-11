@@ -1,57 +1,51 @@
 <header>
 
-<div  class="top-page-header">
-  <div class="logo-field">
-    <%= link_to image_tag("persomme-new-logo.png", class:"persomme-icon"), "/"%>
-  </div>
-      <div class="answer_page">
-      
-        <% if user_signed_in? %>
-        <%= link_to image_tag("writing.png", class:"answer-logo"), url: user_answers_path(current_user.id)%>
-        <%= link_to '回答する',user_answers_path(current_user.id), class:"answer-request-button"%>
-        <% else %>
-        <%= link_to image_tag("writing.png", class:"answer-logo"), url: new_user_session_path%>
-        <%= link_to '回答する',new_user_session_path,class:"answer-request-button"%>
-        <%end%>
+  <div  class="top-page-header">
+    <div class="logo-field">
+      <%= link_to image_tag("persomme-new-logo.png", class:"persomme-icon"), "/"%>
+    </div>
+    <div class="answer_page">
+      <% if user_signed_in? %>
+        <%= link_to image_tag("writing.png", class:"answer-logo"), url: user_answers_path(current_user.id) %>
+        <%= link_to '回答する',user_answers_path(current_user.id), class:"answer-request-button" %>
+      <% else %>
+        <%= link_to image_tag("writing.png", class:"answer-logo"), url: new_user_session_path %>
+        <%= link_to '回答する',new_user_session_path,class:"answer-request-button" %>
+      <% end %>
+    </div>
+    <% if (controller_path == "questions" && action_name == "new")%>
+      <%= search_form_for @p, url: root_path,class:"header-search-form" do |f| %>
+        <% f.label :question_title_cont%>
+        <%= f.text_field :question_title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
+        <%= f.submit class:"fa fa-file-picture"%>
+      <% end %>
+    <%else%>
+      <%= search_form_for @p, url: root_path,class:"header-search-form" do |f| %>
+        <% f.label :question_title_cont%>
+        <%= f.text_field :question_title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
+        <%= f.submit class:"fa fa-file-picture"%>
+      <% end %>
+    <%end%>
 
+
+
+
+    <% if user_signed_in? %>
+      <div class="header-right">
+        <%if current_user.image.attached?%>
+          <%= image_tag current_user.image,class:"user-logo" %>
+        <%else%>
+          <%= image_tag "dummy.png",class:"user-logo"%>
+        <%end%>
+        <div><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></div>
+        <div class="question-button"><%= link_to '質問する', new_question_path, class: "new-question" %> </div> 
       </div>
-      <% if (controller_path == "questions" && action_name == "new")%>
-        <%= search_form_for @p, url: root_path,class:"header-search-form" do |f| %>
-          <% f.label :question_title_cont%>
-          <%= f.text_field :question_title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
-          <%= f.submit class:"fa fa-file-picture"%>
-        <% end %>
-      <%else%>
-        <%= search_form_for @p, url: root_path,class:"header-search-form" do |f| %>
-          <% f.label :question_title_cont%>
-          <%= f.text_field :question_title_cont, class:'input-box',placeholder:'  PERSOMME内を検索'%>
-          <%= f.submit class:"fa fa-file-picture"%>
-        <% end %>
-        <%end%>
-      
-      
-    
-      
-        <% if user_signed_in? %>
-        <div class="header-right">
-          
-          <%if current_user.image.attached?%>
-            <%= image_tag current_user.image,class:"user-logo" %>
-          <%else%>
-              <%= image_tag "dummy.png",class:"user-logo"%>
-          <%end%>
-
-          <div><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></div>
-          <div class="question-button"><%= link_to '質問する', new_question_path, class: "new-question" %> </div> 
-        </div>
-        <% else %>
-         <div class="header-right">
-          
-          <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-          <%= link_to 'ログイン', new_user_session_path, class: "login" %>
-        </div>
-        <% end %>
-      
-    
+    <% else %>
+      <div class="header-right">
+        <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+        <%= link_to 'ログイン', new_user_session_path, class: "login" %>
+      </div>
+    <% end %> 
   </div>
+
 </header>

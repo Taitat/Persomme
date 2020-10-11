@@ -2,31 +2,26 @@
 <%= render "shared/header"%>
 
 <div class="answer-index-page">
-  
-
-    <h1>あなたへの回答依頼</h1>
-
-    
-    <% @answer_requests.each do |answer_request|%>
+  <h1>あなたへの回答依頼</h1>
+  <% @answer_requests.each do |answer_request|%>
     <div class="answer-index">
       <div class="answer-index-genre"><%= answer_request.question.genre.name%></div>
       <div class="answer-index-title"><%= link_to "#{answer_request.question.title}", user_answer_path(current_user.id,answer_request.id)%></div>
       <% if answer_request.selected_ids != nil%>
         <% get_characteristic(answer_request)%>
-          <% @selected_ids.each do |selected_id|%>
-            <span class="selected-title">
-              <%= "##{selected_id.title}"%>
-            </span>
-          <%end%>
-      <%end%>
+        <% @selected_ids.each do |selected_id|%>
+          <span class="selected-title">
+            <%= "##{selected_id.title}"%>
+          </span>
+        <% end %>
+      <% end %>
+
       <div><%= answer_request.created_at %></div>
       <% answer_request.question.answers.each do |answer| %>
-        <% if answer.user_id == current_user.id%>
-        <p>回答済み</p>
-        <%end%>
-      <%end%>
+        <% if answer.user_id == current_user.id %>
+          <p>回答済み</p>
+        <% end %>
+      <% end %>
     </div>
-    <%end%>
-    
-  
+  <% end %>
 </div>

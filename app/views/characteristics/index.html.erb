@@ -11,21 +11,20 @@
   </div>
 
   <div class="characteristics-list yes">
-  <h1 class="yes-persona">あなたがYESと答えたペルソナ</h1>
+    <h1 class="yes-persona">あなたがYESと答えたペルソナ</h1>
     <div class="yes-list-field">
-    <% @characteristics_yes.each do |yes|%>
-      <p><%=yes.title%></p>
-    <%end%>
+      <% @characteristics_yes.each do |yes|%>
+        <p><%=yes.title%></p>
+      <%end%>
     </div>
   </div>
 
   <div class="characteristics-list no">
-  <h2>あなたがNOと答えたペルソナ</h2>
+    <h2>あなたがNOと答えたペルソナ</h2>
     <div class="no-list-field">
-    <% @characteristics_no.each do |no|%>
-      <p><%=no.title%></p>
-    <%end%>
+      <% @characteristics_no.each do |no|%>
+        <p><%=no.title%></p>
+      <%end%>
     </div>
   </div>
-
 </div>

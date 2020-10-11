@@ -3,22 +3,20 @@
 
 <div class="question-index-page">
   <h1>あなたの今までの質問</h1>
-
   <% @questions.each do |question|%>
-  <div class="question-card">
-    <div class="question-card-genre"><%= question.genre.name%></div>
-    <div class="question-information">
-      <div class="question-card-title"><%= link_to "#{question.title}", question_path(question.id)%></div>
-      <div class="favorite-count">
-        <i class="fas fa-heart unlike-btn" ></i> 
+    <div class="question-card">
+      <div class="question-card-genre"><%= question.genre.name%></div>
+      <div class="question-information">
+        <div class="question-card-title"><%= link_to "#{question.title}", question_path(question.id)%></div>
+        <div class="favorite-count">
+          <i class="fas fa-heart unlike-btn" ></i> 
           <% if question.post != nil %>
             <span><%= question.post.favorites.count%></span>
           <% else %>
             <span><%="-"%></span>
           <%end%>
+        </div>  
       </div>  
-    </div>  
-  </div>
+    </div>
   <%end%>
-
 </div>
