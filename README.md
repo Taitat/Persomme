@@ -15,7 +15,7 @@ For more information, read on below.
 <br>
 
 ## :globe_with_meridians:URL
-https://persommelier.herokuapp.com/    
+http://www.persomme.com/    
 <br>
 <br>
   
